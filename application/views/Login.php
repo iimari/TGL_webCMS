@@ -1,3 +1,3 @@
 <?php
-echo 'gd';
+echo 'test';
 ?>

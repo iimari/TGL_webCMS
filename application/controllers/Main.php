@@ -12,7 +12,7 @@ class Main extends CI_Controller{
     }
     function aaa()
     {
-        $this->load->view('Login');
+        $this->load->view('Dashboard');
     }
 }
 

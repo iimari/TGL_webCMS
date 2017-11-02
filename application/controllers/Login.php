@@ -15,8 +15,9 @@ class Login extends CI_Controller{
 
     function sign_out()
     {
-        $this->session->sess_destroy();
-        $this->cache->clean();
+        session_destroy();
+        //$this->session->sess_destroy();
+        //$this->cache->clean();
         //$this->load->view('Login_view');
         redirect('/','refresh');
     }

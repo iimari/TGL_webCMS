@@ -7,13 +7,18 @@ class Login extends CI_Controller{
     {
         parent::__construct();
         $this->load->helper('url');
+<<<<<<< HEAD
         $this->load->model('User_model');        
+=======
+        $this->load->driver('cache');
+>>>>>>> origin/leemw
     }
 
     public function index()
     {
        $this->load->view('Login_view');
     }
+<<<<<<< HEAD
     function sign_in()
     {
         $user = $this->User_model->get_u_id(array('u_id'=>$this->input->post('u_id')));  
@@ -27,6 +32,18 @@ class Login extends CI_Controller{
                 echo "불일치";      
             }
     }
+=======
+
+    function sign_out()
+    {
+        session_destroy();
+        //$this->session->sess_destroy();
+        //$this->cache->clean();
+        //$this->load->view('Login_view');
+        redirect('/','refresh');
+    }
+
+>>>>>>> origin/leemw
 }
 
 ?>

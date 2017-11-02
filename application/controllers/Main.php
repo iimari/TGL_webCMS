@@ -8,12 +8,30 @@ class Main extends CI_Controller{
 
     public function index()
     {
-       $this->load->view('Login_view');
+       $this->load->view('Dashboard');
     }
+<<<<<<< HEAD
     function aaa()
     {
         $this->load->view('Dashboard');
+=======
+    public function _remap($method) {
+        
+        // 헤더 include
+        $this->load->view('Head'); 
+        // 사이드 메뉴 include
+        $this->load->view('Menu'); 
+        
+        //바디
+        if(method_exists($this, $method)) {
+            
+           $this->{"{$method}"}();
+          }
+        // 푸터 include
+        $this->load->view('Footer');
+>>>>>>> origin/leemw
     }
+
 }
 
 ?>

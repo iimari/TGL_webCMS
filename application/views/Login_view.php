@@ -6,11 +6,7 @@
 
     </div>   
 
-<<<<<<< HEAD
     <form action="login/sign_in" method="post">
-=======
-    <form action="Login" method="post">
->>>>>>> origin/leemw
     <table border="1">
     <tr>
     <td><label class="control-label" for="u_id">아이디</label></td>

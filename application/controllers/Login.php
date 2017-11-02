@@ -7,18 +7,14 @@ class Login extends CI_Controller{
     {
         parent::__construct();
         $this->load->helper('url');
-<<<<<<< HEAD
         $this->load->model('User_model');        
-=======
         $this->load->driver('cache');
->>>>>>> origin/leemw
     }
 
     public function index()
     {
        $this->load->view('Login_view');
     }
-<<<<<<< HEAD
     function sign_in()
     {
         $user = $this->User_model->get_u_id(array('u_id'=>$this->input->post('u_id')));  
@@ -26,13 +22,13 @@ class Login extends CI_Controller{
         if($this->input->post('u_id') == $user->u_id && $this->input->post('password') == $user->password)
              {            
                 $this->session->set_userdata('is_login',true);
-                $this->load->view('Dashboard');
+                //$this->load->view('Dashboard');
+                redirect('/Main');
                 
             } else{
                 echo "불일치";      
             }
     }
-=======
 
     function sign_out()
     {
@@ -43,7 +39,6 @@ class Login extends CI_Controller{
         redirect('/','refresh');
     }
 
->>>>>>> origin/leemw
 }
 
 ?>

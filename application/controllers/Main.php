@@ -10,11 +10,6 @@ class Main extends CI_Controller{
     {
        $this->load->view('Dashboard');
     }
-<<<<<<< HEAD
-    function aaa()
-    {
-        $this->load->view('Dashboard');
-=======
     public function _remap($method) {
         
         // 헤더 include
@@ -29,7 +24,6 @@ class Main extends CI_Controller{
           }
         // 푸터 include
         $this->load->view('Footer');
->>>>>>> origin/leemw
     }
 
 }

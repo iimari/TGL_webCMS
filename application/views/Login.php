@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div> 
     <div>
@@ -23,3 +24,6 @@
     </form> 
  
  </div>
+=======
+<div><button>Logout</button> </div>
+>>>>>>> leemw

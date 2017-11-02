@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div> 
     <div>
@@ -7,7 +6,7 @@
 
     </div>   
 
-    <form action="a" method="post">
+    <form action="Login" method="post">
     <table border="1">
     <tr>
     <td><label class="control-label" for="u_id">아이디</label></td>
@@ -24,6 +23,3 @@
     </form> 
  
  </div>
-=======
-<div><button>Logout</button> </div>
->>>>>>> leemw

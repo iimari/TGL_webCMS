@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Main extends CI_Controller{
+class Login extends CI_Controller{
     function __construct()
     {
         parent::__construct();
@@ -9,10 +9,6 @@ class Main extends CI_Controller{
     public function index()
     {
        $this->load->view('Login_view');
-    }
-    function aaa()
-    {
-        $this->load->view('Login');
     }
 }
 

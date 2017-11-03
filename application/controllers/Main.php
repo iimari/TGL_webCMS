@@ -8,7 +8,7 @@ class Main extends CI_Controller{
 
     public function index()
     {
-       $this->load->view('Dashboard');
+       $this->load->view('Dashboard');       
     }
     public function _remap($method) {
         
@@ -16,6 +16,7 @@ class Main extends CI_Controller{
         $this->load->view('Head'); 
         // 사이드 메뉴 include
         $this->load->view('Menu'); 
+       
         
         //바디
         if(method_exists($this, $method)) {

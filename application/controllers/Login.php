@@ -23,17 +23,21 @@ class Login extends CI_Controller{
         
         $user = $this->User_model->get_u_id(array('u_id'=>$this->input->post('u_id')));  
 
-        if($this->input->post('u_id') == $user->u_id && $this->input->post('password') == $user->password)
+        if($this->form_validation->run() === TRUE){
+        if(
+            $this->input->post('u_id') === $user->u_id && 
+            $this->input->post('password') === $user->password)
         {
-            $this->session->set_userdata('is_login',true);                 
-               
-                //$this->load->view('Dashboard');
-                redirect('/Main');
-                
-                
+            //$this->load->view('Dashboard');
+            
+            redirect(base_url('/index.php/Main'), 'refresh');
+                               
             } else{
                 echo "불일치";      
             }
+        } else{
+            echo "아이디/비밀번호를 입력하세요";
+        }
     }
 
     function sign_out()

@@ -6,7 +6,7 @@
 
     </div>   
 
-    <form action="<?php echo site_url('login/sign_in');?>" method="post">
+    <form action="<?php echo site_url('/login/sign_in');?>" method="post">
     <table border="1">
     <tr>
     <td><label class="control-label" for="u_id">아이디</label></td>

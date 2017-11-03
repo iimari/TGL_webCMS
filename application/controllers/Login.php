@@ -9,36 +9,47 @@ class Login extends CI_Controller{
         $this->load->helper('url');
         $this->load->model('User_model');        
         $this->load->driver('cache');
+        $this->load->library('form_validation');
     }
 
     public function index()
-    {      
-       $this->load->view('Login_view');
+    {
+        $this->load->view('Login_view');           
+        
     }
     function sign_in()
-    {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('u_id','아이디','required');
-        $this->form_validation->set_rules('password','비밀번호','required');
-        
-        $user = $this->User_model->get_u_id(array('u_id'=>$this->input->post('u_id')));  
-
-        if($this->form_validation->run() === TRUE){
-        if(
-            $this->input->post('u_id') === $user->u_id && 
-            $this->input->post('password') === $user->password)
+    {                                
+        $this->form_validation->set_rules('u_id','아이디','trim|required');
+        $this->form_validation->set_rules('password','비밀번호','trim|required|callback_basisdata_cek');   
+        if($this->form_validation->run() == false)
         {
-            //$this->load->view('Dashboard');
-            
+            $this->load->view('Login_view');
+        }else {
             redirect(base_url('/index.php/Main'), 'refresh');
-                               
-            } else{
-                echo "불일치";      
-            }
-        } else{
-            echo "아이디/비밀번호를 입력하세요";
         }
+
     }
+    function basisdata_cek($password)
+    {     
+        $auth_data = array( 
+            'u_id' => $this->input->post('u_id'),
+            'password' => $this->input->post('password')
+        );
+        
+        $user = $this->User_model->get_u_id($auth_data);  
+
+        if($user)
+        {                          
+            $sess_array = array();                         
+            $sess_array = $arrayName = array('u_id'=>$user->u_id);                        
+            $this->session->set_userdata('logged_in',$sess_array);                                                                         
+            return true;            
+            
+        }else{          
+
+            return false;                
+        }                                    
+    }         
 
     function sign_out()
     {
@@ -48,7 +59,5 @@ class Login extends CI_Controller{
         //$this->load->view('Login_view');
         redirect('/','refresh');
     }
-
 }
-
 ?>

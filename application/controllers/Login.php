@@ -62,5 +62,7 @@ class Login extends CI_Controller{
         // $this->load->view('Login_view');
         redirect('/','refresh');
     }
+
+ 
 }
 ?>

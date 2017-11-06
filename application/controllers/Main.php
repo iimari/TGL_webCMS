@@ -28,10 +28,16 @@ class Main extends CI_Controller{
         $this->load->view('Site_info', $company_infodata);
     }
 
+ 
+
 
     public function _remap($method) {
-        
-        // 헤더 include
+        // if($method == "popup")
+        // {
+        //     $this->popup();
+        //     echo $method;            
+        // }else {
+        // // 헤더 include
         $this->load->view('Head'); 
         // 사이드 메뉴 include
         $this->load->view('Menu'); 
@@ -39,12 +45,14 @@ class Main extends CI_Controller{
         //바디
          
         if(method_exists($this, $method)) {
-            
+          
            $this->{"{$method}"}();
           }
         // 푸터 include
         $this->load->view('Footer');
-    }
+        // }
+
+     }
 }
 
 ?>

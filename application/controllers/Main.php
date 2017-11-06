@@ -12,14 +12,10 @@ class Main extends CI_Controller{
 
     public function index()
     {  
-        if($this->session->userdata('logged_in')){
+        // if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
             $data['u_id'] = $session_data['u_id'];
-            $this->load->view('Dashboard', $data);
-        }else {
-            redirect('/','refresh');
-        }
-       
+            $this->load->view('Dashboard', $data);            
     }
 
     function site_info()
@@ -32,11 +28,7 @@ class Main extends CI_Controller{
 
 
     public function _remap($method) {
-        // if($method == "popup")
-        // {
-        //     $this->popup();
-        //     echo $method;            
-        // }else {
+        
         // // 헤더 include
         $this->load->view('Head'); 
         // 사이드 메뉴 include
@@ -45,9 +37,13 @@ class Main extends CI_Controller{
         //바디
          
         if(method_exists($this, $method)) {
-          
-           $this->{"{$method}"}();
-          }
+            if($this->session->userdata('logged_in')){
+                $this->{"{$method}"}();
+            }else {
+                redirect('/','refresh');
+            }
+        }
+
         // 푸터 include
         $this->load->view('Footer');
         // }

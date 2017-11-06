@@ -6,10 +6,13 @@ class Login extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
-        $this->load->model('User_model');        
+        $this->load->helper('url');        
         $this->load->driver('cache');
         $this->load->library('form_validation');
+
+        //모델 호출
+        $this->load->model('User_model');        
+
     }
 
     public function index()
@@ -53,10 +56,10 @@ class Login extends CI_Controller{
 
     function sign_out()
     {
-        session_destroy();
-        //$this->session->sess_destroy();
-        //$this->cache->clean();
-        //$this->load->view('Login_view');
+        //session_destroy();
+        $this->session->sess_destroy();
+        $this->cache->clean();
+        // $this->load->view('Login_view');
         redirect('/','refresh');
     }
 }

@@ -5,11 +5,13 @@ class Main extends CI_Controller{
     {
         parent::__construct();
         $this->load->helper('url');
+        //모델 호출
+        $this->load->model('Manager_model');
     }
 
 
     public function index()
-    {
+    {  
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
             $data['u_id'] = $session_data['u_id'];
@@ -18,6 +20,12 @@ class Main extends CI_Controller{
             redirect('/','refresh');
         }
        
+    }
+
+    function site_info()
+    {
+        $company_infodata['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Site_info', $company_infodata);
     }
 
 
@@ -29,6 +37,7 @@ class Main extends CI_Controller{
         $this->load->view('Menu'); 
         
         //바디
+         
         if(method_exists($this, $method)) {
             
            $this->{"{$method}"}();

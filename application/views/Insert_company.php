@@ -4,14 +4,13 @@
 <title>업체 추가</title>
 </head>
 <body>
-
-<?php echo validation_errors(); ?>
-
 <?php echo form_open('popup/insert_comapany'); ?>
     <h5>Company 추가</h5>
         <div class="company_input">
             <a>업체 이름 : </a><input type="text" name="c_name" value="" size="25" />
+            <?php echo form_error('c_name'); ?>
             <a>홈페이지 주소 : </a><input type="text" name="c_homepage" value="" size="25" />
+            <?php echo form_error('c_homepage'); ?>
         </br>
             <a>업체 펙스 : </a><input type="text" name="c_fax" value="" size="25" />
             <a>업체 전화번호 : </a><input type="text" name="c_tel" value="" size="25" />

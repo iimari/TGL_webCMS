@@ -18,16 +18,38 @@ class Popup extends CI_Controller{
         $this->load->view('Company_info', array('data'=>$data));              
     }
 
+    function c_name_check()
+    {
+        $test =  $this->input->post('c_name');
+        if($test == null)
+        {
+            $this->form_validation->set_message('c_name_check', '업체이름은 필수 입력 사항입니다.');                
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    function c_homepage_check()
+    {
+        $test =  $this->input->post('c_homepage');
+        if($test == null)
+        {
+            $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     function insert_comapany()
     {
-        $this->form_validation->set_rules('c_name', '업체이름', 'required');
-        $this->form_validation->set_rules('c_homepage', '홈페이지', 'required');
-        $this->form_validation->set_rules('c_manager', '담당자', 'required');
-        $this->form_validation->set_rules('c_tel', '담당자 전화번호', 'required');
+        $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
+        $this->form_validation->set_rules('c_homepage', '홈페이지', 'required|callback_c_homepage_check');        
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('insert_company');
+            $this->load->view('insert_company');            
         }
         else
         {   

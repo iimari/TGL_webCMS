@@ -11,6 +11,7 @@ class User_model extends CI_Model {
         $result = $this->db->get_where('user', array('u_id'=>$option['u_id'], 'password'=>$option['password']), $limit)->row();
         return $result;
     }
+    
 }
 
 

@@ -24,9 +24,6 @@ class Main extends CI_Controller{
         $this->load->view('Site_info', $company_infodata);
     }
 
- 
-
-
     public function _remap($method) {
         
         // // 헤더 include

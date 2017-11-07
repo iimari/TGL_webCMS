@@ -57,12 +57,12 @@ class Popup extends CI_Controller{
 
             $domain_array = array(
                 'd_homepage' => $this->input->post('c_homepage'),
-                // 'd_servicename' => $this->input->post('hosting_ftp_pw')
-                // 'd_name' => $this->input->post('hosting_name'),
+                'd_servicename' => $this->input->post('domain_servicename'),
+                'd_name' => $this->input->post('domain_name'),
+                'd_id' => $this->input->post('domain_id'),
+                'd_pw' => $this->input->post('domain_pw'),
                 'd_startdate' => $this->input->post('domain_st_d'),
-                'd_enddate' => $this->input->post('domain_ed_d')
-                // 'd_ftpid' => $this->input->post('hosting_ftp_id'),
-                // 'd_ftppw' => $this->input->post('hosting_ftp_pw')                                   
+                'd_enddate' => $this->input->post('domain_ed_d')                                          
             );
 
             $manager_array = array(
@@ -100,9 +100,7 @@ class Popup extends CI_Controller{
             $this->input->post('c_fax'),
             $this->input->post('c_homepage'),
             $this->input->post('c_bigo1'),
-            $this->input->post('c_createdate'));
-  
-            redirect(site_url('/main/site_info'), 'refresh');
+            $this->input->post('c_createdate'));              
     }
         
     }

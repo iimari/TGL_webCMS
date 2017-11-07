@@ -41,8 +41,14 @@
         <h5>도메인</h5>
         <a>도메인 신청</a><input type="checkbox" name="domain_check" class="domain_check" value="1"/>
         <div class="domain_input" style="display:none;">
+            <a>서비스업체 : </a><input type="text" name="domain_servicename" id="textTest" value="" size="15" />
+            <a>도메인 ID  : </a><input type="text" name="domain_id" id="textTest" value="" size="15" />
+            <a>도메인 PW : </a><input type="text" name="domain_pw" id="textTest" value="" size="15" />
+            </br>
+            <a>신청 도메인 주소 : </a><input type="text" name="domain_name" id="textTest" value="" size="15" />
+            </br>
             <a>도메인 시작일 : </a><input type="text" name="domain_st_d" id="textTest" value="" size="15" />
-            <a>도메인 종료일 : </a><input type="text" name="domain_ed_d" value="" size="15" />
+            <a>도메인 종료일 : </a><input type="text" name="domain_ed_d" value="" size="15" />            
         </div>
         <br>
 

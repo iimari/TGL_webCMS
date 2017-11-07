@@ -60,6 +60,7 @@
         </br>
         </br>
 <div><input type="submit" value="Submit" /></div>
+<a href="#" onclick="window.close(); return false;"><div><input type="button" value="Close" /></div></a>
 
 </form>
 

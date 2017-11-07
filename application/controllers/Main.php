@@ -24,11 +24,9 @@ class Main extends CI_Controller{
         $this->load->view('Site_info', $company_infodata);
     }
 
- 
-
-
     public function _remap($method) {
         
+        $this->load->view('/include/Common');
         // // 헤더 include
         $this->load->view('Head'); 
         // 사이드 메뉴 include

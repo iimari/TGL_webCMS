@@ -15,8 +15,10 @@
             </br>            
             </br>    
         <div>
-            <?php foreach($list as $lt){         
-                ?>                
+            <?php if(empty($list)) {?>
+                <a>자료가 없습니다.</a>                   
+                <?php }else {                         
+                foreach($list as $lt){ ?>                
                 <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/detailinfo/'.$lt['c_num'].'');?>','name','resizable=no width=800 height=800');return false">               
                 <div style = "text-decoration:none; border-style:solid">
                     <?php 
@@ -68,17 +70,9 @@
                     </div>
                 </div>
                 </a>
-
-            <?php } ?>
+            <?php }
+            } ?>
         </div>                
     </div>
 </div>
-
-<script type="text/javascript">
-$('.insert_company').click(function(event))
-{
-    $('')
-    $()
-});
-</script>
 </body>

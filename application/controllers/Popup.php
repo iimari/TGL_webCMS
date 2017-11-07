@@ -93,7 +93,7 @@ class Popup extends CI_Controller{
                 'm_enddate' => $this->input->post('managerment_ed_d'),                
            );
                                             
-            $this->Manager_model->insert_company_info($company_array,$hosting_array,$domain_array,$manager_array);       
+            $this->Manager_model->insert_company_info($company_array,$hosting_array,$domain_array,$manager_array);                               
             redirect('/popup/insert_comapany','refresh');     
             
         }

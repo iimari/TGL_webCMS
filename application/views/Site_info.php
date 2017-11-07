@@ -1,3 +1,4 @@
+<body>
 <?php 
    $h_startdate = 1;
    $d_startdate = 1;
@@ -7,7 +8,9 @@
     <div>
         <h2>사이트관리 입니다.</h2>
         <!-- <?php echo $u_id ?> -->
-            <a href="<?php echo site_url('/Main/site_info'); ?>">생성</a>
+            <!-- <a href="<?php echo site_url('/Main/site_info'); ?>">등록</a> -->            
+            <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/insert_comapany');?>','name','resizable=no width=800 height=800');return false">등록</a>
+            <!-- <a href="<?php echo site_url('/Main/site_info'); ?>">등록</a>     -->
             <a href="<?php echo site_url('/Main/site_info'); ?>">엑셀다운</a>
             </br>            
             </br>    
@@ -17,7 +20,7 @@
                 <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/detailinfo/'.$lt['c_num'].'');?>','name','resizable=no width=800 height=800');return false">               
                 <div style = "text-decoration:none; border-style:solid">
                     <?php 
-                        if($lt['c_hosting_check'] == '0'){
+                        if($lt['c_hosting_check'] == null){
                             ?>
                             <div>비활성화/호스팅</div>
                             <?php
@@ -28,7 +31,7 @@
                             <?php
                             echo "\t";
                         }
-                        if($lt['c_domain_check'] == '0'){
+                        if($lt['c_domain_check'] == null){
                             ?>
                             <div>비활성화/도메인</div>
                             <?php     
@@ -39,7 +42,7 @@
                             <?php                      
                             echo "\t";  
                         }
-                        if($lt['c_managerment_check'] == '0'){
+                        if($lt['c_managerment_check'] == null){
                             ?>
                             <div>비활성화/유지보수</div>
                             <?php                        
@@ -71,3 +74,11 @@
     </div>
 </div>
 
+<script type="text/javascript">
+$('.insert_company').click(function(event))
+{
+    $('')
+    $()
+});
+</script>
+</body>

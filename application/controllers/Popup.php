@@ -184,8 +184,24 @@ class Popup extends CI_Controller{
     }
         
     }
+    function managerment_insert($id,$homepage){
 
+        $this->form_validation->set_rules('mh_worker', '작성자', 'required');
+        
+        if ($this->form_validation->run() == FALSE)
+        {                     
+            redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');            
+        }else{
+            $managerment_array = array(
+                'mh_homepage' => $homepage,
+                'mh_text'=> $this->input->post('mh_text'),
+                'mh_worker'=> $this->input->post('mh_worker')
+               
+            );
 
-
+        $this->Manager_model->manager_insert($managerment_array);
+            redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');
+        }
+    }
 }
 

@@ -106,5 +106,20 @@
 <?php } ?>
 </table>
 
+<form action="<?php echo site_url('/popup/managerment_insert/'.$c_data->c_num.'/'.$c_data->c_homepage);?>" method="post">
+<table border="1">
+<tr>
+<th><label class="control-label" >작성자</label></th>
+<th><textarea name="mh_worker" cols="70" rows="2" ></textarea></th>
+
+</tr>
+<tr>
+<th><label class="control-label">내용</label></th>
+<th><textarea name="mh_text" cols="70" rows="20"></textarea></th>
+</tr>
+</table>
+<input class ="btn" type="submit" value="등록"/>
+</form>
+
 
 

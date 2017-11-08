@@ -63,6 +63,14 @@ class Manager_model extends CI_Model {
         $this->db->set('m_createdate','now()',false);
         $this->db->insert('manager_info',$managerment_array);                
     }
+
+
+    function manager_insert($managerment_array)
+    {
+        $this->db->set('mh_createdate','now()',false);                
+        $this->db->insert('manager_history',$managerment_array);
+    }
+
 }
 
 

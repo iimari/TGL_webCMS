@@ -71,14 +71,6 @@
 <th><label class="control-label" >도메인관리만료일</label></th>
 <td><?=$d_data->d_enddate?></td>
 </tr>
-<?php foreach($mh_data as $mh) { ?>
-<th><label class="control-label" >관리내역 시간</label></th>
-<td><?=$mh_data->mh_createdate?></td>
-</tr>
-<th><label class="control-label" >관리내역 내용</label></th>
-<td><?=$mh_data->mh_text?></td>
-</tr>
-<?php } ?>
 
 </table>
 </div>

@@ -24,13 +24,29 @@ class Main extends CI_Controller{
         $this->load->view('Site_info', $company_infodata);
     }
 
+    function hosting_info()
+    {
+        $this->load->view('Hosting');            
+    }
+
+    function domain_info()
+    {
+        $company_infodata['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Domain',$company_infodata);            
+    }
+
+    function managerment_info()
+    {
+        $this->load->view('Managerment');            
+    }
+
     public function _remap($method) {
         
         $this->load->view('/include/Common');
         // // 헤더 include
-        $this->load->view('Head'); 
+        $this->load->view('/include/Head'); 
         // 사이드 메뉴 include
-        $this->load->view('Menu'); 
+        $this->load->view('/include/Menu'); 
         
         //바디
          
@@ -43,7 +59,7 @@ class Main extends CI_Controller{
         }
 
         // 푸터 include
-        $this->load->view('Footer');
+        $this->load->view('/include/Footer');
         // }
 
      }

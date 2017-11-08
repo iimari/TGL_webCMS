@@ -147,31 +147,36 @@ class Popup extends CI_Controller{
         if ($this->form_validation->run() == FALSE){
             $this->load->view('Main_rewrite');
         }else{   
-        $data_num = $this->Manager_model->c_update_content(
-            $this->input->post('c_num'),
-            $this->input->post('c_name'),
-            $this->input->post('c_manager'),
-            $this->input->post('c_phone'),
-            $this->input->post('c_mail'),
-            $this->input->post('c_fax'),
-            $this->input->post('c_homepage'),
-            $this->input->post('c_bigo1'));
-        $data_num = $this->Manager_model->h_update_content(
-            $this->input->post('h_num'),
-            $this->input->post('h_name'),
-            $this->input->post('h_startdate'),
-            $this->input->post('h_enddate'),
-            $this->input->post('h_ftpid'),
-            $this->input->post('h_ftppw'),
-            $this->input->post('h_dbid'),
-            $this->input->post('h_dbpw'));
-        $data_num = $this->Manager_model->d_update_content(           
-            $this->input->post('d_num'),
-            $this->input->post('d_servicename'),
-            $this->input->post('d_id'),
-            $this->input->post('d_pw'),
-            $this->input->post('d_enddate'));
-                        
+
+        $company_array = array(
+            'c_num'=> $this->input->post('c_num'),
+            'c_name'=>$this->input->post('c_name'),
+            'c_manager'=>$this->input->post('c_manager'),
+            'c_phone'=>$this->input->post('c_phone'),
+            'c_mail'=> $this->input->post('c_mail'),
+            'c_fax'=>$this->input->post('c_fax'),
+            'c_homepage'=>$this->input->post('c_homepage'),
+            'c_bigo1'=>$this->input->post('c_bigo1')
+        );
+        $hosting_array = array(
+            'h_num'=>$this->input->post('h_num'),
+            'h_name'=>$this->input->post('h_name'),
+            'h_startdate'=>$this->input->post('h_startdate'),
+            'h_enddate'=>$this->input->post('h_enddate'),
+            'h_ftpid'=>$this->input->post('h_ftpid'),
+            'h_ftppw'=>$this->input->post('h_ftppw'),
+            'h_dbid'=>$this->input->post('h_dbid'),
+            'h_dbpw'=>$this->input->post('h_dbpw')
+        );
+
+        $domain_array = array(
+            'd_num'=>$this->input->post('d_num'),
+            'd_servicename'=>$this->input->post('d_servicename'),
+            'd_id'=>$this->input->post('d_id'),
+            'd_pw'=>$this->input->post('d_pw'),
+            'd_enddate'=>$this->input->post('d_enddate')
+        );
+        $this->Manager_model->update_content($company_array,$hosting_array,$domain_array);                      
 
             $id = $this->input->post('c_num');
             redirect(site_url("/popup/detailinfo/$id"), 'refresh');

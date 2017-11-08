@@ -1,4 +1,4 @@
-<div>유지보수업체정보    
+<div><h3>유지보수업체정보</h3>   
 <div>   
 <table border="1">
 
@@ -71,15 +71,6 @@
 <th><label class="control-label" >도메인관리만료일</label></th>
 <td><?=$d_data->d_enddate?></td>
 </tr>
-<?php foreach($mh_data as $mh) { ?>
-<th><label class="control-label" >관리내역 시간</label></th>
-<td><?=$mh_data->mh_createdate?></td>
-</tr>
-<th><label class="control-label" >관리내역 내용</label></th>
-<td><?=$mh_data->mh_text?></td>
-</tr>
-<?php } ?>
-
 </table>
 </div>
 
@@ -92,7 +83,28 @@
 
 <a href="#" onclick="window.close(); return false;">닫기</a>
 
-<!-- <div>    
-<a href = "<?php// echo site_url('/popup/detail_modify');?>">수정</a>
-</div> -->
+
 </div>
+
+<div><h3>관리내역</h3>    
+<div>
+<table border="1">
+<tr>
+<th><label class="control-label" >업체 홈페이지</label></th>
+<th><label class="control-label" >관리내역 작성자</label></th>
+<th><label class="control-label" >관리내역 작성시간</label></th>
+<th><label class="control-label" >관리내역 작성내용</label></th>
+</tr>
+<?php foreach($mh_data as $mh) { ?>
+
+<tr>
+<td><?=$mh->mh_homepage?></td>
+<td><?=$mh->mh_worker?></td>
+<td><?=$mh->mh_createdate?></td>
+<td><?=$mh->mh_text?></td>
+</tr>
+<?php } ?>
+</table>
+
+
+

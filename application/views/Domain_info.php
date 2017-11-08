@@ -1,4 +1,4 @@
-<div>도메인 업체 정보    
+<div><h3>도메인업체정보</h3>   
 <div>   
 <table border="1">
 <tr>

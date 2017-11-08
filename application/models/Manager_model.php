@@ -29,7 +29,7 @@ class Manager_model extends CI_Model {
     function get_manager_history($mh_homepage)
     {              
         //어레이변환 작업 필요
-       return $this->db->get_where('manager_history', array('mh_homepage'=>$mh_homepage))->row();        
+       return $this->db->get_where('manager_history', array('mh_homepage'=>$mh_homepage))->result();    
     }
 
     //수정 디비 업체

@@ -1,4 +1,4 @@
-<div>업체 정보    
+<div><h3>업체정보</h3>    
 <div>   
 <table border="1">
 

@@ -28,7 +28,8 @@ class Popup extends CI_Controller{
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
         $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);  
         //관리내역   
-        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);     
+        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);
+
         $this->load->view('Managerment_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data,'mh_data'=>$mh_data));          
     }   
 

@@ -9,13 +9,17 @@ class Popup extends CI_Controller{
         $this->load->helper('Form');
         $this->load->library('form_validation');
          //모델 호출
-        $this->load->model('Manager_model');        
+        $this->load->model('Manager_model');  
+        
+        $set_num;        
 
     }
     //업체상세정보
     function detailinfo($c_num){
-        $data = $this->Manager_model->get_company_detailinfo($c_num);
-        $this->load->view('Company_info', array('data'=>$data));              
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
+        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
+        $this->load->view('Company_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data));          
     }
 
     function c_name_check()
@@ -99,21 +103,25 @@ class Popup extends CI_Controller{
         }
     }
     //업체수정시 불러오기
-    function detail_modify(){
+    function detail_modify(){        
         $c_num = $this->input->post('c_num');
-        $mo_data = $this->Manager_model->get_company_detailinfo($c_num);
-        $this->load->view('Main_rewrite', array('mo_data'=>$mo_data));
+        $d_num = $this->input->post('c_num');
+        $h_num = $this->input->post('c_num');
+        $mo_c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $mo_d_data = $this->Manager_model->get_domain_detailinfo($d_num);
+        $mo_h_data = $this->Manager_model->get_hosting_detailinfo($h_num);
+        $this->load->view('Main_rewrite', array('mo_c_data'=>$mo_c_data,
+        'mo_d_data'=>$mo_d_data,'mo_h_data'=>$mo_h_data));
 
     }
-    function detail_modifysave(){
-       
+    function detail_modifysave(){        
         $this->form_validation->set_rules('c_name', '업체명', 'required');        
         $this->form_validation->set_rules('c_manager', '담당자', 'required');
 
         if ($this->form_validation->run() == FALSE){
             $this->load->view('Main_rewrite');
         }else{   
-        $data_num = $this->Manager_model->update_content(
+        $data_num = $this->Manager_model->c_update_content(
             $this->input->post('c_num'),
             $this->input->post('c_name'),
             $this->input->post('c_manager'),
@@ -122,7 +130,31 @@ class Popup extends CI_Controller{
             $this->input->post('c_fax'),
             $this->input->post('c_homepage'),
             $this->input->post('c_bigo1'),
+<<<<<<< HEAD
             $this->input->post('c_createdate'));              
+=======
+            $this->input->post('c_createdate'));
+        $data_num = $this->Manager_model->h_update_content(
+            $this->input->post('h_num'),
+            $this->input->post('h_name'),
+            $this->input->post('h_startdate'),
+            $this->input->post('h_enddate'),
+            $this->input->post('h_ftpid'),
+            $this->input->post('h_ftppw'),
+            $this->input->post('h_dbid'),
+            $this->input->post('h_dbpw'));
+        $data_num = $this->Manager_model->d_update_content(           
+            $this->input->post('d_num'),
+            $this->input->post('d_servicename'),
+            $this->input->post('d_id'),
+            $this->input->post('d_pw'),
+            $this->input->post('d_enddate'));
+                        
+
+            $id = $this->input->post('c_num');
+            redirect(site_url("/popup/detailinfo/$id"), 'refresh');
+            
+>>>>>>> gwlee
     }
         
     }

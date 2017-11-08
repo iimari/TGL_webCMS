@@ -43,7 +43,18 @@ class Manager_model extends CI_Model {
         return $result;
 
     }
-    function get_companyinfo($menu)
+    
+
+    function get_companyinfo()
+    {                    
+         $query = $this->db->get('company');
+        // $query = $this->db->get_where('company', array('c_name'=>$name)->row();        
+        $result = $query->result_array();
+        return $result;
+    }
+
+
+    function get_activation_companyinfo($menu)
     {
         $compare = 0;           
         return $result = $this->get_select_data($menu, $compare);
@@ -52,34 +63,10 @@ class Manager_model extends CI_Model {
     function get_expiration_company($menu)
     {
         $compare = 1;   
-        return $result = $this->get_select_data($menu, $compare);
-        // $hosting = 'hosting_info';
-        // $domain = 'domain_info';
-        // $manager = 'manager_info';
-
-        // if($menu == $hosting){
-        //     $menu_table = $hosting;
-        //     $menu_id = 'h_';                                     
-        //     $state_check = 'hosting';
-        // }else if($menu == $domain){
-        //     $menu_table = $domain;
-        //     $menu_id = 'd_';                                     
-        //     $state_check = 'domain';
-        // }else if($menu == $manager){
-        //     $menu_table = $manager;
-        //     $menu_id = 'm_';                                     
-        //     $state_check = 'managerment';
-        // }
-
-        // $this->db->select('*');
-        // $this->db->from('company');
-        // $this->db->join($menu_table, 'company.c_num = '.$menu_table.'.'.$menu_id.'num');     
-        // $this->db->where('company.c_'.$state_check.'_check=1 and '.$menu_table.'.'.$menu_id.'enddate < now()');
-        // $query = $this->db->get();
-        // $result = $query->result_array();
-        // return $result;
-
+        return $result = $this->get_select_data($menu, $compare);        
     }
+
+
     //업체상세정보, 수정시 불러오기
     function get_company_detailinfo($c_num)
     {              

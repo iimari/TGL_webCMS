@@ -52,7 +52,7 @@ class Main extends CI_Controller{
     {
         $view_data = substr($tabledata,0,-5) ;
 
-        $company_info_data = $this->Manager_model->get_companyinfo($tabledata);          
+        $company_info_data = $this->Manager_model->get_activation_companyinfo($tabledata);          
         $tabledata = $this->Manager_model->get_expiration_company($tabledata);                
         $this->load->view($view_data, array('company_info_data'=>$company_info_data, 'tabledata'=>$tabledata));                    
     }

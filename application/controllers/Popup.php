@@ -189,7 +189,8 @@ class Popup extends CI_Controller{
         $this->form_validation->set_rules('mh_worker', '작성자', 'required');
         
         if ($this->form_validation->run() == FALSE)
-        {                     
+        {                  
+            echo "<script>alert('등록에 실패했습니다.');</script>";   
             redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');            
         }else{
             $managerment_array = array(

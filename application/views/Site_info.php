@@ -9,7 +9,7 @@
         <h2>사이트관리 입니다.</h2>
         <!-- <?php echo $u_id ?> -->
             <!-- <a href="<?php echo site_url('/Main/site_info'); ?>">등록</a> -->            
-            <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/insert_comapany');?>','name','resizable=no width=800 height=800');return false">등록</a>
+            <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/insert_company');?>','name','resizable=no width=800 height=800');return false">등록</a>
             <!-- <a href="<?php echo site_url('/Main/site_info'); ?>">등록</a>     -->
             <a href="<?php echo site_url('/Main/site_info'); ?>">엑셀다운</a>
             </br>            

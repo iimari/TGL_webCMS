@@ -4,7 +4,7 @@
         <h2>호스팅 정보</h2>        
     </div>
     <div>
-        <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/insert_comapany');?>','name','resizable=no width=800 height=800');return false">등록</a>            
+        <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/insert_company');?>','name','resizable=no width=800 height=800');return false">등록</a>            
         <a href="<?php echo site_url('/Main/site_info'); ?>">엑셀다운</a>
     </div>
     <div>

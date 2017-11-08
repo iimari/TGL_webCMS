@@ -23,11 +23,13 @@ class Popup extends CI_Controller{
     }    
     
       //유지보수상세정보
-      function manager_detailinfo($c_num){
+      function manager_detailinfo($c_num,$mh_homepage){
         $c_data = $this->Manager_model->get_company_detailinfo($c_num);
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
-        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
-        $this->load->view('Managerment_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data));          
+        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);  
+        //관리내역   
+        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);     
+        $this->load->view('Managerment_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data,'mh_data'=>$mh_data));          
     }   
 
     //도메인상세정보
@@ -68,7 +70,7 @@ class Popup extends CI_Controller{
         }
     }
     //업체 생성
-    function insert_comapany()
+    function insert_company()
     {
         $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
         $this->form_validation->set_rules('c_homepage', '홈페이지', 'required|callback_c_homepage_check');        

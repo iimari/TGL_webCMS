@@ -25,6 +25,13 @@ class Manager_model extends CI_Model {
     {              
        return $this->db->get_where('hosting_info', array('h_num'=>$h_num))->row();        
     }
+
+    function get_manager_history($mh_homepage)
+    {              
+        //어레이변환 작업 필요
+       return $this->db->get_where('manager_history', array('mh_homepage'=>$mh_homepage))->row();        
+    }
+
     //수정 디비 업체
     public function c_update_content($c_num,$c_name,$c_manager,$c_phone,
                                     $c_mail,$c_fax,$c_homepage,$c_bigo1,$c_createdate){        

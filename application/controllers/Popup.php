@@ -20,6 +20,28 @@ class Popup extends CI_Controller{
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
         $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
         $this->load->view('Company_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data));          
+    }    
+    
+      //유지보수상세정보
+      function manager_detailinfo($c_num){
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
+        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
+        $this->load->view('Managerment_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data));          
+    }   
+
+    //도메인상세정보
+    function domain_detailinfo($c_num){
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
+        $this->load->view('Domain_info', array('c_data'=>$c_data,'d_data'=>$d_data));          
+    }
+    
+    //호스팅상세정보
+    function hosting_detailinfo($c_num){
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
+        $this->load->view('Hosting_info', array('c_data'=>$c_data,'h_data'=>$h_data));          
     }
 
     function c_name_check()

@@ -45,7 +45,7 @@ class Popup extends CI_Controller{
             return true;
         }
     }
-
+    //업체 생성
     function insert_comapany()
     {
         $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
@@ -114,6 +114,7 @@ class Popup extends CI_Controller{
         'mo_d_data'=>$mo_d_data,'mo_h_data'=>$mo_h_data));
 
     }
+    //업체수정 저장
     function detail_modifysave(){        
         $this->form_validation->set_rules('c_name', '업체명', 'required');        
         $this->form_validation->set_rules('c_manager', '담당자', 'required');
@@ -129,8 +130,7 @@ class Popup extends CI_Controller{
             $this->input->post('c_mail'),
             $this->input->post('c_fax'),
             $this->input->post('c_homepage'),
-            $this->input->post('c_bigo1'),
-            $this->input->post('c_createdate'));
+            $this->input->post('c_bigo1'));
         $data_num = $this->Manager_model->h_update_content(
             $this->input->post('h_num'),
             $this->input->post('h_name'),

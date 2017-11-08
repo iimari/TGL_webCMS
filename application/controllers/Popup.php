@@ -130,9 +130,6 @@ class Popup extends CI_Controller{
             $this->input->post('c_fax'),
             $this->input->post('c_homepage'),
             $this->input->post('c_bigo1'),
-<<<<<<< HEAD
-            $this->input->post('c_createdate'));              
-=======
             $this->input->post('c_createdate'));
         $data_num = $this->Manager_model->h_update_content(
             $this->input->post('h_num'),
@@ -154,7 +151,6 @@ class Popup extends CI_Controller{
             $id = $this->input->post('c_num');
             redirect(site_url("/popup/detailinfo/$id"), 'refresh');
             
->>>>>>> gwlee
     }
         
     }

@@ -6,38 +6,41 @@ class Main extends CI_Controller{
         parent::__construct();
         $this->load->helper('url');
         //모델 호출
-        $this->load->model('Manager_model');
+        $this->load->model('Manager_model');        
+        
     }
 
-
+    
     public function index()
     {  
         // if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
             $data['u_id'] = $session_data['u_id'];
-            $this->load->view('Dashboard', $data);            
+            $this->load->view('Dashboard', $data);                        
     }
 
     function site_info()
     {
-        $company_infodata['list'] = $this->Manager_model->get_companyinfo();
-        $this->load->view('Site_info', $company_infodata);
+        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Site_info', $company_info_data);
     }
 
     function hosting_info()
     {
-        $this->load->view('Hosting');            
+        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Hosting',$company_info_data);            
     }
 
     function domain_info()
     {
-        $company_infodata['list'] = $this->Manager_model->get_companyinfo();
-        $this->load->view('Domain',$company_infodata);            
+        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Domain',$company_info_data);            
     }
 
     function managerment_info()
     {
-        $this->load->view('Managerment');            
+        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
+        $this->load->view('Managerment',$company_info_data);            
     }
 
     public function _remap($method) {

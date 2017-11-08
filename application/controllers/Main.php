@@ -20,27 +20,41 @@ class Main extends CI_Controller{
     }
 
     function site_info()
-    {
+    {                
         $company_info_data['list'] = $this->Manager_model->get_companyinfo();
         $this->load->view('Site_info', $company_info_data);
+        
     }
 
     function hosting_info()
     {
-        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
-        $this->load->view('Hosting',$company_info_data);            
+        $tabledata = 'hosting_info';
+        $this->tabledata_select($tabledata);
     }
 
     function domain_info()
     {
-        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
-        $this->load->view('Domain',$company_info_data);            
+        $tabledata = 'domain_info';
+        $this->tabledata_select($tabledata);
+                   
     }
 
     function managerment_info()
     {
-        $company_info_data['list'] = $this->Manager_model->get_companyinfo();
-        $this->load->view('Managerment',$company_info_data);            
+        $tabledata = 'manager_info';
+        $this->tabledata_select($tabledata);
+        // $company_info_data = $this->Manager_model->get_companyinfo();   
+        // $tabledata = $this->Manager_model->get_expiration_company($tabledata);                
+        // $this->load->view('Hosting', array('company_info_data'=>$company_info_data, 'tabledata'=>$tabledata));                    
+    }
+
+    function tabledata_select($tabledata)
+    {
+        $view_data = substr($tabledata,0,-5) ;
+
+        $company_info_data = $this->Manager_model->get_activation_companyinfo($tabledata);          
+        $tabledata = $this->Manager_model->get_expiration_company($tabledata);                
+        $this->load->view($view_data, array('company_info_data'=>$company_info_data, 'tabledata'=>$tabledata));                    
     }
 
     public function _remap($method) {

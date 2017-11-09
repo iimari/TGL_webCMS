@@ -60,17 +60,19 @@
 <table border="1">
 <tr>
 <th><label class="control-label" >업체 홈페이지</label></th>
+<th><label class="control-label" >제목</label></th>
+<th><label class="control-label" >관리내역 작성내용</label></th>
 <th><label class="control-label" >관리내역 작성자</label></th>
 <th><label class="control-label" >관리내역 작성시간</label></th>
-<th><label class="control-label" >관리내역 작성내용</label></th>
 </tr>
 <?php foreach($mh_data as $mh) { ?>
 
 <tr>
 <td><?=$mh->mh_homepage?></td>
+<td><a href= "<?php echo site_url('/popup/managerment_modify/'.$c_data->c_num.'/'.$c_data->c_homepage.'/'.$mh->mh_num);?>"><?=$mh->mh_title?></td>
+<td><?=$mh->mh_text?></td>
 <td><?=$mh->mh_worker?></td>
 <td><?=$mh->mh_createdate?></td>
-<td><?=$mh->mh_text?></td>
 </tr>
 <?php } ?>
 </table>
@@ -79,8 +81,11 @@
 <table border="1">
 <tr>
 <th><label class="control-label" >작성자</label></th>
-<th><textarea name="mh_worker" cols="70" rows="2" ></textarea></th>
-
+<th><textarea name="mh_worker" cols="70" rows="1" ></textarea></th>
+</tr>
+<tr>
+<th><label class="control-label" >제목</label></th>
+<th><textarea name="mh_title" cols="70" rows="2" ></textarea></th>
 </tr>
 <tr>
 <th><label class="control-label">내용</label></th>

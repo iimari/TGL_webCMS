@@ -218,6 +218,7 @@ class Popup extends CI_Controller{
                 $manager_array = array('');
             }
 
+<<<<<<< HEAD
             if($type == 'hosting_detailinfo' or $type == 'detailinfo')          
             {
                 $hosting_array = array(
@@ -236,6 +237,14 @@ class Popup extends CI_Controller{
             $this->Manager_model->update_content($company_array, $hosting_array, $domain_array, $manager_array,$type);                
             redirect(site_url("/popup/$type/$id/$homepage"), 'refresh');            
         }        
+=======
+            $id = $this->input->post('c_num');
+            $c_homepage = $this->input->post('c_homepage');
+            redirect(site_url("/popup/detailinfo/$id/$c_homepage"), 'refresh');
+            
+    }
+        
+>>>>>>> origin/gwlee
     }
     function managerment_insert($id,$homepage){
 
@@ -248,6 +257,7 @@ class Popup extends CI_Controller{
         }else{
             $managerment_array = array(
                 'mh_homepage' => $homepage,
+                'mh_title'=> $this->input->post('mh_title'),
                 'mh_text'=> $this->input->post('mh_text'),
                 'mh_worker'=> $this->input->post('mh_worker')
                
@@ -257,5 +267,27 @@ class Popup extends CI_Controller{
             redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');
         }
     }
+    //관리내역 수정
+    function managerment_modify($id,$homepage,$mh_num){       
+      
+        $mo_m_data = $this->Manager_model->get_manager_detailinfo($mh_num);
+        $this->load->view('Manager_rewrite', array('mo_m_data'=>$mo_m_data,'id'=>$id,'homepage'=>$homepage));
+
+    }
+    //관리내역 수정저장
+    function managerment_modifysave(){       
+        
+        $manager_array = array(
+            'mh_num'=> $this->input->post('mh_num'),
+            'mh_worker'=>$this->input->post('mh_worker'),
+            'mh_title'=>$this->input->post('mh_title'),
+            'mh_text'=>$this->input->post('mh_text')
+        );
+        $this->Manager_model->manager_modifysave($manager_array);       
+
+        $id = $this->input->post('id');
+        $mh_homepage = $this->input->post('homepage');
+        redirect(site_url("/popup/manager_detailinfo/$id/$mh_homepage"), 'refresh');
+     }
 }
 

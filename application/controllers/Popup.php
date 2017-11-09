@@ -19,32 +19,58 @@ class Popup extends CI_Controller{
         $c_data = $this->Manager_model->get_company_detailinfo($c_num);
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
         $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
-        $this->load->view('Company_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data));          
+        $type = $this->uri->segment(2);
+        $this->load->view('Company_info', 
+                    array(
+                            'c_data'=>$c_data,
+                            'd_data'=>$d_data,
+                            'h_data'=>$h_data,
+                            'type'=>$type
+                        ));          
     }    
     
-      //유지보수상세정보
-      function manager_detailinfo($c_num,$mh_homepage){
-        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
-        $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
-        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);  
-        //관리내역   
-        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);
+    //유지보수상세정보
+    function manager_detailinfo($c_num,$mh_homepage){
+        $m_data = $this->Manager_model->get_manager_detailinfo($c_num);    
+        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);        
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);                   
+        
 
-        $this->load->view('Managerment_info', array('c_data'=>$c_data,'d_data'=>$d_data,'h_data'=>$h_data,'mh_data'=>$mh_data));          
+        $type = $this->uri->segment(2);
+        $this->load->view('Managerment_info', 
+                    array(
+                            'c_data'=>$c_data,
+                            'm_data'=>$m_data,
+                            'mh_data'=>$mh_data,
+                            'type'=>$type
+                        ));          
     }   
 
     //도메인상세정보
     function domain_detailinfo($c_num){
-        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
-        $this->load->view('Domain_info', array('c_data'=>$c_data,'d_data'=>$d_data));          
-    }
-    
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        
+
+        $type = $this->uri->segment(2);
+        $this->load->view('Domain_info', 
+                    array(
+                            'c_data'=>$c_data,
+                            'd_data'=>$d_data,
+                            'type'=>$type
+                        ));          
+    }    
     //호스팅상세정보
     function hosting_detailinfo($c_num){
-        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
         $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
-        $this->load->view('Hosting_info', array('c_data'=>$c_data,'h_data'=>$h_data));          
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);       
+        $type = $this->uri->segment(2);
+        $this->load->view('Hosting_info', 
+                    array(
+                            'c_data'=>$c_data,
+                            'h_data'=>$h_data,
+                            'type'=>$type
+                        ));          
     }
 
     function c_name_check()
@@ -128,25 +154,35 @@ class Popup extends CI_Controller{
         }
     }
     //업체수정시 불러오기
-    function detail_modify(){        
+    function detail_modify($type){        
         $c_num = $this->input->post('c_num');
-        $d_num = $this->input->post('c_num');
-        $h_num = $this->input->post('c_num');
+        // $d_num = $this->input->post('c_num');
+        // $h_num = $this->input->post('c_num');
         $mo_c_data = $this->Manager_model->get_company_detailinfo($c_num);
-        $mo_d_data = $this->Manager_model->get_domain_detailinfo($d_num);
-        $mo_h_data = $this->Manager_model->get_hosting_detailinfo($h_num);
-        $this->load->view('Main_rewrite', array('mo_c_data'=>$mo_c_data,
-        'mo_d_data'=>$mo_d_data,'mo_h_data'=>$mo_h_data));
+        $mo_d_data = $this->Manager_model->get_domain_detailinfo($c_num);
+        $mo_h_data = $this->Manager_model->get_hosting_detailinfo($c_num);
+        $mo_m_data = $this->Manager_model->get_manager_detailinfo($c_num);        
 
+        $this->load->view('Main_rewrite', array(
+            'mo_c_data'=>$mo_c_data,
+            'mo_d_data'=>$mo_d_data,
+            'mo_h_data'=>$mo_h_data,
+            'mo_m_data'=>$mo_m_data,
+            'type'=>$type
+        ));        
     }
     //업체수정 저장
-    function detail_modifysave(){        
+    function detail_modifysave($type){   
+
         $this->form_validation->set_rules('c_name', '업체명', 'required');        
         $this->form_validation->set_rules('c_manager', '담당자', 'required');
 
+        $id = $this->input->post('c_num');
+        $homepage = $this->input->post('c_homepage');
+
         if ($this->form_validation->run() == FALSE){
             $this->load->view('Main_rewrite');
-        }else{   
+        }else{  
 
         $company_array = array(
             'c_num'=> $this->input->post('c_num'),
@@ -158,31 +194,48 @@ class Popup extends CI_Controller{
             'c_homepage'=>$this->input->post('c_homepage'),
             'c_bigo1'=>$this->input->post('c_bigo1')
         );
-        $hosting_array = array(
-            'h_num'=>$this->input->post('h_num'),
-            'h_name'=>$this->input->post('h_name'),
-            'h_startdate'=>$this->input->post('h_startdate'),
-            'h_enddate'=>$this->input->post('h_enddate'),
-            'h_ftpid'=>$this->input->post('h_ftpid'),
-            'h_ftppw'=>$this->input->post('h_ftppw'),
-            'h_dbid'=>$this->input->post('h_dbid'),
-            'h_dbpw'=>$this->input->post('h_dbpw')
-        );
+            if($type == 'domain_detailinfo' or $type == 'detailinfo' )
+            {
+                $domain_array = array(
+                    'd_num'=>$this->input->post('d_num'),
+                    'd_servicename'=>$this->input->post('d_servicename'),
+                    'd_id'=>$this->input->post('d_id'),
+                    'd_pw'=>$this->input->post('d_pw'),
+                    'd_enddate'=>$this->input->post('d_enddate')
+                );                            
+            }else {
+                $domain_array = array('');
+            }
 
-        $domain_array = array(
-            'd_num'=>$this->input->post('d_num'),
-            'd_servicename'=>$this->input->post('d_servicename'),
-            'd_id'=>$this->input->post('d_id'),
-            'd_pw'=>$this->input->post('d_pw'),
-            'd_enddate'=>$this->input->post('d_enddate')
-        );
-        $this->Manager_model->update_content($company_array,$hosting_array,$domain_array);                      
+            if($type == 'manager_detailinfo' or $type == 'detailinfo')  
+            {
+                $manager_array = array(
+                    'm_num'=>$this->input->post('m_num'),
+                    'm_startdate'=>$this->input->post('m_startdate'),
+                    'm_enddate'=>$this->input->post('m_enddate')
+                );              
+            }else {
+                $manager_array = array('');
+            }
 
-            $id = $this->input->post('c_num');
-            redirect(site_url("/popup/detailinfo/$id"), 'refresh');
-            
-    }
-        
+            if($type == 'hosting_detailinfo' or $type == 'detailinfo')          
+            {
+                $hosting_array = array(
+                    'h_num'=>$this->input->post('h_num'),
+                    'h_name'=>$this->input->post('h_name'),
+                    'h_startdate'=>$this->input->post('h_startdate'),
+                    'h_enddate'=>$this->input->post('h_enddate'),
+                    'h_ftpid'=>$this->input->post('h_ftpid'),
+                    'h_ftppw'=>$this->input->post('h_ftppw'),
+                    'h_dbid'=>$this->input->post('h_dbid'),
+                    'h_dbpw'=>$this->input->post('h_dbpw')
+                );             
+            }else {
+                $hosting_array = array('');
+            }                            
+            $this->Manager_model->update_content($company_array, $hosting_array, $domain_array, $manager_array,$type);                
+            redirect(site_url("/popup/$type/$id/$homepage"), 'refresh');            
+        }        
     }
     function managerment_insert($id,$homepage){
 

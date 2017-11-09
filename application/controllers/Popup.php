@@ -78,7 +78,7 @@ class Popup extends CI_Controller{
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->load->view('insert_company');            
+            $this->load->view('Insert_company');            
         }
         else
         {   
@@ -123,7 +123,7 @@ class Popup extends CI_Controller{
            );
                                             
             $this->Manager_model->insert_company_info($company_array,$hosting_array,$domain_array,$manager_array);                               
-            redirect('/popup/insert_comapany','refresh');     
+            redirect('/popup/insert_company','refresh');     
             
         }
     }

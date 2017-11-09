@@ -1,13 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller{
+     
+
     function __construct()
     {
         parent::__construct();
         $this->load->helper('url');
         //모델 호출
-        $this->load->model('Manager_model');        
-        
+        $this->load->model('Manager_model');               
     }
 
     
@@ -28,8 +29,8 @@ class Main extends CI_Controller{
 
     function hosting_info()
     {
-        $tabledata = 'hosting_info';
-        $this->tabledata_select($tabledata);
+       $tabledata = 'hosting_info';        
+       $this->tabledata_select($tabledata);
     }
 
     function domain_info()
@@ -42,10 +43,7 @@ class Main extends CI_Controller{
     function managerment_info()
     {
         $tabledata = 'manager_info';
-        $this->tabledata_select($tabledata);
-        // $company_info_data = $this->Manager_model->get_companyinfo();   
-        // $tabledata = $this->Manager_model->get_expiration_company($tabledata);                
-        // $this->load->view('Hosting', array('company_info_data'=>$company_info_data, 'tabledata'=>$tabledata));                    
+        $this->tabledata_select($tabledata);        
     }
 
     function tabledata_select($tabledata)

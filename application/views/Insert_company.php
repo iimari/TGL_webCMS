@@ -4,7 +4,7 @@
 <title>업체 추가</title>
 </head>
 <body>
-<?php echo form_open('popup/insert_comapany'); ?>
+<?php echo form_open('popup/insert_company'); ?>
     <h5>Company 추가</h5>
         <div class="company_input">
             <a>업체 이름 : </a><input type="text" name="c_name" value="" size="25" />

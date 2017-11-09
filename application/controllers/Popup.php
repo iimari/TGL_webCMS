@@ -218,7 +218,6 @@ class Popup extends CI_Controller{
                 $manager_array = array('');
             }
 
-<<<<<<< HEAD
             if($type == 'hosting_detailinfo' or $type == 'detailinfo')          
             {
                 $hosting_array = array(
@@ -237,14 +236,6 @@ class Popup extends CI_Controller{
             $this->Manager_model->update_content($company_array, $hosting_array, $domain_array, $manager_array,$type);                
             redirect(site_url("/popup/$type/$id/$homepage"), 'refresh');            
         }        
-=======
-            $id = $this->input->post('c_num');
-            $c_homepage = $this->input->post('c_homepage');
-            redirect(site_url("/popup/detailinfo/$id/$c_homepage"), 'refresh');
-            
-    }
-        
->>>>>>> origin/gwlee
     }
     function managerment_insert($id,$homepage){
 
@@ -270,7 +261,7 @@ class Popup extends CI_Controller{
     //관리내역 수정
     function managerment_modify($id,$homepage,$mh_num){       
       
-        $mo_m_data = $this->Manager_model->get_manager_detailinfo($mh_num);
+        $mo_m_data = $this->Manager_model->get_managerment_detailinfo($mh_num);
         $this->load->view('Manager_rewrite', array('mo_m_data'=>$mo_m_data,'id'=>$id,'homepage'=>$homepage));
 
     }

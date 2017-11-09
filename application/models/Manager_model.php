@@ -138,10 +138,10 @@ class Manager_model extends CI_Model {
         $this->db->insert('manager_history',$managerment_array);
     }
 
-    function get_manager_detailinfo($mh_num)
-    {              
-       return $this->db->get_where('manager_history', array('mh_num'=>$mh_num))->row();    
-    }
+     function get_managerment_detailinfo($mh_num)
+     {              
+        return $this->db->get_where('manager_history', array('mh_num'=>$mh_num))->row();    
+     }
 
     function manager_modifysave($manager_array){
         $mh_num=$manager_array['mh_num'];

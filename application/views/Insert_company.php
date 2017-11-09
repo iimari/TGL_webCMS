@@ -16,6 +16,7 @@
             <a>업체 전화번호 : </a><input type="text" name="c_tel" value="" size="25" />
         </br>
             <a>담당자 : </a><input type="text" name="c_manager" value="" size="15" />
+            <?php echo form_error('c_manager'); ?>
             <a>담당자 전화번호 : </a><input type="text" name="c_phone" value="" size="20" />
             <a>담당자 이메일 : </a><input type="text" name="c_mail" value="" size="15" />
         </div>

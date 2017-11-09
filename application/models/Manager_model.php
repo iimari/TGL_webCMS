@@ -52,6 +52,10 @@ class Manager_model extends CI_Model {
         $result = $query->result_array();
         return $result;
     }
+    function insert_companyinfo_check($id)
+    {        
+        return $this->db->get_where('company', array('c_homepage'=>$id))->row();        
+    }
 
 
     function get_activation_companyinfo($menu)

@@ -85,22 +85,41 @@ class Popup extends CI_Controller{
         }
     }
 
-    function c_homepage_check()
+    function c_homepage_check($id)
     {
-        $test =  $this->input->post('c_homepage');
+        //$test =  $this->input->post('c_homepage');
+        $result = $this->Manager_model->insert_companyinfo_check($id);        
+        if($id == null){
+            $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            return false;
+
+        }else if($result->c_homepage == $id){
+            $this->form_validation->set_message('c_homepage_check', $id.'는 중복입니다.');                
+            return false;
+
+        }else {
+            return true;
+        }
+    }
+
+    function c_manager_check()
+    {        
+        $test =  $this->input->post('c_manager');
         if($test == null)
         {
-            $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            $this->form_validation->set_message('c_manager_check', '홈페이지 주소는 필수 입력 사항입니다.');                
             return false;
         }else {
             return true;
         }
     }
+    
     //업체 생성
     function insert_company()
     {
         $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
         $this->form_validation->set_rules('c_homepage', '홈페이지', 'required|callback_c_homepage_check');        
+        $this->form_validation->set_rules('c_manager', '담당자', 'required|callback_c_manager_check');        
 
         if ($this->form_validation->run() == FALSE)
         {

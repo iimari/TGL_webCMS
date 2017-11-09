@@ -80,27 +80,39 @@ class Manager_model extends CI_Model {
     {              
        return $this->db->get_where('hosting_info', array('h_num'=>$h_num))->row();        
     }
-
     function get_manager_history($mh_homepage)
     {              
        return $this->db->get_where('manager_history', array('mh_homepage'=>$mh_homepage))->result();    
     }
+    function get_manager_detailinfo($m_num)
+    {
+       return $this->db->get_where('manager_info', array('m_num'=>$m_num))->row();
+    }
     //수정 디비 업체
-    public function update_content($company_array,$hosting_array,$domain_array){        
+    public function update_content($company_array,$hosting_array,$domain_array,$manager_array, $type){        
 
-                $c_num=$company_array['c_num'];
-                $this->db->where('c_num',$c_num);
-                $this->db->update('company',$company_array);
+            $c_num=$company_array['c_num'];
+            $this->db->where('c_num',$c_num);
+            $this->db->update('company', $company_array);
 
-                $h_num=$hosting_array['h_num'];
-                $this->db->where('h_num',$c_num);
-                $this->db->update('hosting_info',$hosting_array);
-
-                $d_num=$domain_array['d_num'];
-                $this->db->where('d_num',$c_num);
-                $this->db->update('domain_info',$domain_array);
-
-        }   
+        if($type == 'domain_detailinfo' or $type == 'detailinfo' )
+        {
+            // $d_num=$domain_array['d_num'];
+            $this->db->where('d_num',$c_num);
+            $this->db->update('domain_info', $domain_array);
+        }
+        if($type == 'hosting_detailinfo' or $type == 'detailinfo' )
+        {
+            // $h_num=$hosting_array['h_num'];
+            $this->db->where('h_num',$c_num);
+            $this->db->update('hosting_info', $hosting_array);
+        }     
+        if($type == 'manager_detailinfo' or $type == 'detailinfo' )
+        {            
+            $this->db->where('m_num',$c_num);
+            $this->db->update('manager_info', $manager_array);
+        }
+    }   
     
     //삽입
     function insert_company_info($company_array,$hosting_array,$domain_array,$managerment_array)

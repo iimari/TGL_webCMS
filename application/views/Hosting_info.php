@@ -61,11 +61,11 @@
 </table>
 </div>
 
-<form action="<?php echo site_url('/popup/detail_modify');?>" method="post">
+<form action="<?php echo site_url('/popup/detail_modify/'.$type.'');?>" method="post">
 <div style="visibility:hidden">
 <input type="text" name="c_num" placeholder="업체번호" value = "<?=$c_data->c_num?>"></input><br>    
 </div>
-<input class ="btn" type="submit" value="수정"/>
+<input class ="btn" type="submit" value="정보수정"/>
 </form>
 
 <a href="#" onclick="window.close(); return false;">닫기</a>

@@ -1,5 +1,8 @@
-<form action="<?php echo site_url('/popup/detail_modifysave');?>" method="post" >
-<div style="visibility:hidden">
+<?php echo $type; ?>
+
+<form action="<?php echo site_url('/popup/detail_modifysave/'.$type.'');?>" method="post" >
+<div style="display:none">
+    <input type="text" name="m_num" placeholder="업체번호" value = "<?=$mo_m_data->m_num?>"></input><br>
     <input type="text" name="c_num" placeholder="업체번호" value = "<?=$mo_c_data->c_num?>"></input><br>
     <input type="text" name="d_num" placeholder="업체번호" value = "<?=$mo_d_data->d_num?>"></input><br>
     <input type="text" name="h_num" placeholder="업체번호" value = "<?=$mo_h_data->h_num?>"></input><br>  
@@ -33,52 +36,65 @@
     <th><label class="control-label">비고</label></th>
     <td><input type="text" name="c_bigo1" placeholder="비고1" value = "<?=$mo_c_data->c_bigo1?>"></input></td> 
 </tr>
-<tr>
-    <th><label class="control-label" >업체등록일</label></th>    
-    <td><input type="text" name="c_createdate" placeholder="업체등록일" value = "<?=$mo_c_data->c_createdate?>"></input></td> 
-</tr>
+<?php if($type == 'hosting_detailinfo' or $type == 'detailinfo') {?>
+<!-- 호스팅 시작 -->
+        <tr>
+            <th><label class="control-label" >호스팅업체</label></th>
+            <td><input type="text" name="h_name" placeholder="호스티업체" value = "<?=$mo_h_data->h_name?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >호스팅시작일</label></th>
+            <td><input type="text" name="h_startdate" placeholder="호스팅시작일" value = "<?=$mo_h_data->h_startdate?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >호스팅종료일</label></th>
+            <td><input type="text" name="h_enddate" placeholder="호스팅종료일" value = "<?=$mo_h_data->h_enddate?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >FTP ID</label></th>
+            <td><input type="text" name="h_ftpid" placeholder="FTP ID" value = "<?=$mo_h_data->h_ftpid?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >FTP PW</label></th>
+            <td><input type="text" name="h_ftppw" placeholder="FTP PW" value = "<?=$mo_h_data->h_ftppw?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >DB ID</label></th>
+            <td><input type="text" name="h_dbid" placeholder="DB ID" value = "<?=$mo_h_data->h_dbid?>"></input></td>
+        </tr>
+        <tr>
+            <th><label class="control-label" >DB PW</label></th>
+            <td><input type="text" name="h_dbpw" placeholder="DB PW" value = "<?=$mo_h_data->h_dbpw?>"></input></td>
+        </tr>
+<?php } if($type == 'domain_detailinfo' or $type == 'detailinfo' ) {?>
+<!-- 호스팅 끝 -->
+<!-- 도메인 시작 -->
+        <tr>
+            <th><label class="control-label" >도메인서비스주소</label></th>
+            <td><input type="text" name="d_servicename" placeholder="도메인서비스주소" value = "<?=$mo_d_data->d_servicename?>"></input></td>
+        </tr>
+            <th><label class="control-label" >도메인 ID</label></th>
+            <td><input type="text" name="d_id" placeholder="도메인 ID" value = "<?=$mo_d_data->d_id?>"></input></td>
+        </tr>
+            <th><label class="control-label" >도메인 PW</label></th>
+            <td><input type="text" name="d_pw" placeholder="도메인 PW" value = "<?=$mo_d_data->d_pw?>"></input></td>
+        </tr>
+            <th><label class="control-label" >도메인 만료일</label></th>
+            <td><input type="text" name="d_enddate" placeholder="도메인 만료일" value = "<?=$mo_d_data->d_enddate?>"></input></td>
+        </tr>
+        <!-- 도메인 끝 -->
+        <!-- 유지보수 시작 -->
 
-<tr>
-<th><label class="control-label" >호스팅업체</label></th>
-<td><input type="text" name="h_name" placeholder="호스티업체" value = "<?=$mo_h_data->h_name?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >호스팅시작일</label></th>
-<td><input type="text" name="h_startdate" placeholder="호스팅시작일" value = "<?=$mo_h_data->h_startdate?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >호스팅종료일</label></th>
-<td><input type="text" name="h_enddate" placeholder="호스팅종료일" value = "<?=$mo_h_data->h_enddate?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >FTP ID</label></th>
-<td><input type="text" name="h_ftpid" placeholder="FTP ID" value = "<?=$mo_h_data->h_ftpid?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >FTP PW</label></th>
-<td><input type="text" name="h_ftppw" placeholder="FTP PW" value = "<?=$mo_h_data->h_ftppw?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >DB ID</label></th>
-<td><input type="text" name="h_dbid" placeholder="DB ID" value = "<?=$mo_h_data->h_dbid?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >DB PW</label></th>
-<td><input type="text" name="h_dbpw" placeholder="DB PW" value = "<?=$mo_h_data->h_dbpw?>"></input></td>
-</tr>
-<tr>
-<th><label class="control-label" >도메인서비스주소</label></th>
-<td><input type="text" name="d_servicename" placeholder="도메인서비스주소" value = "<?=$mo_d_data->d_servicename?>"></input></td>
-</tr>
-<th><label class="control-label" >도메인 ID</label></th>
-<td><input type="text" name="d_id" placeholder="도메인 ID" value = "<?=$mo_d_data->d_id?>"></input></td>
-</tr>
-<th><label class="control-label" >도메인 PW</label></th>
-<td><input type="text" name="d_pw" placeholder="도메인 PW" value = "<?=$mo_d_data->d_pw?>"></input></td>
-</tr>
-<th><label class="control-label" >도메인관리만료일</label></th>
-<td><input type="text" name="d_enddate" placeholder="도메인관리만료일" value = "<?=$mo_d_data->d_enddate?>"></input></td>
-</tr>
+<?php } if($type == 'manager_detailinfo' or $type == 'detailinfo') {?>
+        <tr>
+            <th><label class="control-label" >유지보수 시작일</label></th>
+            <td><input type="text" name="m_startdate" placeholder="도메인서비스주소" value="<?=$mo_m_data->m_startdate?>"></input></td>
+        </tr>
+            <th><label class="control-label" >유지보수 종료일</label></th>
+            <td><input type="text" name="m_enddate" placeholder="도메인 ID" value="<?=$mo_m_data->m_enddate?>"></input></td>
+        </tr>
+<?php } ?>
+<!-- 유지보수 끝 -->       
 </table>
 
     <input class ="btn" type="submit" value="저장"/>

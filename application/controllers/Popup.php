@@ -16,15 +16,18 @@ class Popup extends CI_Controller{
     }
     //업체상세정보
     function detailinfo($c_num){
-        $c_data = $this->Manager_model->get_company_detailinfo($c_num);
+        $c_data = $this->Manager_model->get_company_detailinfo($c_num);        
         $d_data = $this->Manager_model->get_domain_detailinfo($c_num);
-        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);     
+        $h_data = $this->Manager_model->get_hosting_detailinfo($c_num);
+        $m_data = $this->Manager_model->get_manager_detailinfo($c_num); 
+
         $type = $this->uri->segment(2);
         $this->load->view('Company_info', 
                     array(
                             'c_data'=>$c_data,
                             'd_data'=>$d_data,
                             'h_data'=>$h_data,
+                            'm_data'=>$m_data,
                             'type'=>$type
                         ));          
     }    

@@ -31,6 +31,14 @@
 <td><?=$c_data->c_bigo1?></td>
 </tr>
 <tr>
+<th><label class="control-label">유지보수시작일</label></th>
+<td><?=$m_data->m_startdate?></td>
+</tr>
+<tr>
+<th><label class="control-label">유지보수마감일</label></th>
+<td><?=$m_data->m_enddate?></td>
+</tr>
+<tr>
 <th><label class="control-label" >호스팅업체</label></th>
 <td><?=$h_data->h_name?></td>
 </tr>

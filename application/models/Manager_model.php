@@ -7,7 +7,7 @@ class Manager_model extends CI_Model {
         parent::__construct();
         
     }
-
+    //만료 
     function get_select_data($menu,$compare_data)     
     {
         $hosting = 'hosting_info';
@@ -44,7 +44,7 @@ class Manager_model extends CI_Model {
 
     }
     
-
+    //관리페이지 업체리스트
     function get_companyinfo()
     {                    
          $query = $this->db->get('company');
@@ -52,6 +52,7 @@ class Manager_model extends CI_Model {
         $result = $query->result_array();
         return $result;
     }
+    
     function insert_companyinfo_check($id)
     {        
         return $this->db->get_where('company', array('c_homepage'=>$id))->row();        
@@ -142,10 +143,10 @@ class Manager_model extends CI_Model {
         $this->db->insert('manager_history',$managerment_array);
     }
 
-     function get_managerment_detailinfo($mh_num)
-     {              
+    function get_managerment_detailinfo($mh_num)
+    {              
         return $this->db->get_where('manager_history', array('mh_num'=>$mh_num))->row();    
-     }
+    }
 
     function manager_modifysave($manager_array){
         $mh_num=$manager_array['mh_num'];

@@ -259,6 +259,8 @@ class Popup extends CI_Controller{
             redirect(site_url("/popup/$type/$id/$homepage"), 'refresh');            
         }        
     }
+
+    //관리내역생성
     function managerment_insert($id,$homepage){
 
         $this->form_validation->set_rules('mh_worker', '작성자', 'required');

@@ -1,6 +1,7 @@
 <div>
     <a href="<?php echo site_url('/login/sign_out') ?>">Logout</a>
 </div>
+
 <?php echo '메뉴 입니다.' ?>
 <ul>
     <li><a href="<?php echo site_url('/Main/index') ?>">대시보드<a></li>
@@ -11,3 +12,7 @@
         <li><a href="<?php echo site_url('/Main/hosting_info') ?>">호스팅<a></li>
     </ul>
 </ul>
+
+<div>
+    <a href="http://www.good8288.com" type="button">굳앤굳 이동</a>
+</div>

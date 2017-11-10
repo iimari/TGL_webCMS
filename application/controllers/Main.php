@@ -8,16 +8,25 @@ class Main extends CI_Controller{
         parent::__construct();
         $this->load->helper('url');
         //모델 호출
-        $this->load->model('Manager_model');               
+        $this->load->model('Manager_model');
+        $this->load->model('Dashboard_model');                
     }
 
     
     public function index()
     {  
-        // if($this->session->userdata('logged_in')){
+      
             $session_data = $this->session->userdata('logged_in');
             $data['u_id'] = $session_data['u_id'];
-            $this->load->view('Dashboard', $data);                        
+            $manager =  'manager';
+            $domain =  'domain';
+            $hosting =  'hosting';
+
+            $company_info_data['manager'] = $this->Dashboard_model->get_limitdata($manager);
+            $company_info_data['domain'] = $this->Dashboard_model->get_limitdata($domain);
+            $company_info_data['hosting'] = $this->Dashboard_model->get_limitdata($hosting);
+            $this->load->view('Dashboard', $company_info_data);           
+            
     }
 
     function site_info()
@@ -53,6 +62,7 @@ class Main extends CI_Controller{
         $company_info_data = $this->Manager_model->get_activation_companyinfo($tabledata);          
         $tabledata = $this->Manager_model->get_expiration_company($tabledata);                
         $this->load->view($view_data, array('company_info_data'=>$company_info_data, 'tabledata'=>$tabledata));                    
+        
     }
 
     public function _remap($method) {

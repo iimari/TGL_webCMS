@@ -76,7 +76,11 @@
 <th><label class="control-label" >도메인 PW</label></th>
 <td><?=$d_data->d_pw?></td>
 </tr>
-<th><label class="control-label" >도메인관리만료일</label></th>
+<th><label class="control-label" >도메인관리 시작일</label></th>
+<td><?=$d_data->d_startdate?></td>
+</tr>
+</tr>
+<th><label class="control-label" >도메인관리 만료일</label></th>
 <td><?=$d_data->d_enddate?></td>
 </tr>
 </table>

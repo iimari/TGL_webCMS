@@ -42,6 +42,10 @@
 <th><label class="control-label" >도메인관리만료일</label></th>
 <td><?=$d_data->d_enddate?></td>
 </tr>
+</tr>
+<th><label class="control-label" >메모</label></th>
+<td><?=$d_data->d_memo?></td>
+</tr>
 </table>
 </div>
 

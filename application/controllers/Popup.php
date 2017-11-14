@@ -226,7 +226,8 @@ class Popup extends CI_Controller{
                     'd_servicename'=>$this->input->post('d_servicename'),
                     'd_id'=>$this->input->post('d_id'),
                     'd_pw'=>$this->input->post('d_pw'),
-                    'd_enddate'=>$this->input->post('d_enddate')
+                    'd_enddate'=>$this->input->post('d_enddate'),
+                    'd_memo'=>$this->input->post('d_memo')
                 );                            
             }else {
                 $domain_array = array('');
@@ -253,7 +254,8 @@ class Popup extends CI_Controller{
                     'h_ftpid'=>$this->input->post('h_ftpid'),
                     'h_ftppw'=>$this->input->post('h_ftppw'),
                     'h_dbid'=>$this->input->post('h_dbid'),
-                    'h_dbpw'=>$this->input->post('h_dbpw')
+                    'h_dbpw'=>$this->input->post('h_dbpw'),
+                    'h_memo'=>$this->input->post('h_memo')
                 );             
             }else {
                 $hosting_array = array('');

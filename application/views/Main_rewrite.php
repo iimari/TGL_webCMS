@@ -66,6 +66,10 @@
             <th><label class="control-label" >DB PW</label></th>
             <td><input type="text" name="h_dbpw" placeholder="DB PW" value = "<?=$mo_h_data->h_dbpw?>"></input></td>
         </tr>
+        </tr>
+            <th><label class="control-label" >메모</label></th>
+            <td><input type="text" name="h_memo" placeholder="메모" value = "<?=$mo_h_data->h_memo?>"></input></td>
+        </tr>
 <?php } if($type == 'domain_detailinfo' or $type == 'detailinfo' ) {?>
 <!-- 호스팅 끝 -->
 <!-- 도메인 시작 -->
@@ -82,6 +86,12 @@
             <th><label class="control-label" >도메인 만료일</label></th>
             <td><input type="text" name="d_enddate" placeholder="도메인 만료일" value = "<?=$mo_d_data->d_enddate?>"></input></td>
         </tr>
+        </tr>
+            <th><label class="control-label" >메모</label></th>
+            <td><input type="text" name="d_memo" placeholder="메모" value = "<?=$mo_d_data->d_memo?>"></input></td>
+        </tr>
+        
+        
         <!-- 도메인 끝 -->
         <!-- 유지보수 시작 -->
 

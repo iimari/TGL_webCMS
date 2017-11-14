@@ -58,6 +58,10 @@
 <th><label class="control-label" >DB PW</label></th>
 <td><?=$h_data->h_dbpw?></td>
 </tr>
+<tr>
+<th><label class="control-label" >메모</label></th>
+<td><?=$h_data->h_memo?></td>
+</tr>
 </table>
 </div>
 

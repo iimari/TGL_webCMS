@@ -88,19 +88,15 @@ class Popup extends CI_Controller{
         }
     }
 
-    function c_homepage_check($id)
-    {
-        //$test =  $this->input->post('c_homepage');
-        $result = $this->Manager_model->insert_companyinfo_check($id);                
-      
+    function domain_check($id)
+    {        
+        $result =  $this->Manager_model->insert_companyinfo_check($id);     
         if($id == null){
-            $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            $this->form_validation->set_message('domain_check', '도메인 주소는 필수 입력 사항입니다.');                
             return false;
-        }else if($id == $result['c_homepage']){
-        // }else if($result['c_homepage'] == $id){
-            $this->form_validation->set_message('c_homepage_check', $id.'는 중복입니다.');                
+        }else if($result){        
+            $this->form_validation->set_message('domain_check', $id.'는 중복입니다.');                
             return false;
-
         }else {
             return true;
         }
@@ -122,7 +118,7 @@ class Popup extends CI_Controller{
     function insert_company()
     {
         $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
-        $this->form_validation->set_rules('c_homepage', '홈페이지', 'required|callback_c_homepage_check');        
+        $this->form_validation->set_rules('domain_name', '홈페이지', 'required|callback_domain_check');        
         $this->form_validation->set_rules('c_manager', '담당자', 'required|callback_c_manager_check');        
 
         if ($this->form_validation->run() == FALSE)
@@ -130,51 +126,73 @@ class Popup extends CI_Controller{
             $this->load->view('Insert_company');            
         }
         else
-        {   
+        {  
+            $check_hosting =  $this->input->post('hosting_ed_d');            
+            $check_domain =  $this->input->post('domain_ed_d');
+            $check_manager =  $this->input->post('managerment_ed_d');
+
+            if($check_hosting == NULL)
+            {
+                $check_hosting = 0;
+            }else {
+                $check_hosting = 1;
+            }
+            if($check_domain == NULL)
+            {
+                $check_domain = 0;
+            }else {
+                $check_domain = 1;
+            }
+            if($check_manager == NULL)
+            {
+                $check_manager = 0;
+            }else {
+                $check_manager = 1;
+            }
+
             $company_array = array(
                 'c_name' => $this->input->post('c_name'),
-                'c_homepage' => $this->input->post('c_homepage'),
-                'c_fax' => $this->input->post('c_fax'),
-                'c_tel' => $this->input->post('c_tel'),                
-                'c_manager' => $this->input->post('c_manager'),
+                'c_manager' => $this->input->post('c_manager'),                            
+                'c_tel' => $this->input->post('c_tel'),                                
                 'c_phone' => $this->input->post('c_phone'),
                 'c_mail' => $this->input->post('c_mail'),
-                'c_hosting_check' => $this->input->post('hosting_check'),
-                'c_domain_check' => $this->input->post('domain_check'),
-                'c_managerment_check' => $this->input->post('managerment_check'),                                         
+                'c_domain' => $this->input->post('domain_name'),  
+                'c_hosting_check' => $check_hosting,
+                'c_domain_check' => $check_domain,
+                'c_managerment_check' => $check_manager
             );                      
 
             $hosting_array = array(
-                    'h_homepage' => $this->input->post('c_homepage'),
+                    'h_domain' => $this->input->post('domain_name'),
                     'h_name' => $this->input->post('hosting_name'),
+                    'h_id' => $this->input->post('hosting_id'),
+                    'h_pw' => $this->input->post('hosting_pw'),
                     'h_startdate' => $this->input->post('hosting_st_d'),
                     'h_enddate' => $this->input->post('hosting_ed_d'),
                     'h_ftpid' => $this->input->post('hosting_ftp_id'),
                     'h_ftppw' => $this->input->post('hosting_ftp_pw'),
+                    'h_ftpmemo' => $this->input->post('hosting_ftp_memo'),
                     'h_dbid' => $this->input->post('hosting_db_id'),
-                    'h_dbpw' => $this->input->post('hosting_db_pw'),   
-                    'h_memo' => $this->input->post('hosting_memo')
+                    'h_dbpw' => $this->input->post('hosting_db_pw'),                       
             );
 
             $domain_array = array(
-                'd_homepage' => $this->input->post('c_homepage'),
-                'd_servicename' => $this->input->post('domain_servicename'),
                 'd_name' => $this->input->post('domain_name'),
+                'd_servicename' => $this->input->post('domain_servicename'),                
                 'd_id' => $this->input->post('domain_id'),
                 'd_pw' => $this->input->post('domain_pw'),
                 'd_startdate' => $this->input->post('domain_st_d'),
-                'd_enddate' => $this->input->post('domain_ed_d'),
-                'd_memo' => $this->input->post('domain_memo')
+                'd_enddate' => $this->input->post('domain_ed_d'),                
             );
 
             $manager_array = array(
-                'm_homepage' => $this->input->post('c_homepage'),                
+                'm_domain' => $this->input->post('domain_name'),                
                 'm_startdate' => $this->input->post('managerment_st_d'),
                 'm_enddate' => $this->input->post('managerment_ed_d')                
            );
                                             
             $this->Manager_model->insert_company_info($company_array,$hosting_array,$domain_array,$manager_array);                               
-            redirect('/popup/insert_company','refresh');     
+           redirect('/popup/insert_company','refresh');     
             
         }
     }

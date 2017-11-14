@@ -47,15 +47,15 @@ class Manager_model extends CI_Model {
     //관리페이지 업체리스트
     function get_companyinfo()
     {                    
-         $query = $this->db->get('company');
-        // $query = $this->db->get_where('company', array('c_name'=>$name)->row();        
+        $query = $this->db->get('company');        
         $result = $query->result_array();
         return $result;
     }
     
     function insert_companyinfo_check($id)
-    {        
-        return $this->db->get_where('company', array('c_homepage'=>$id))->row();        
+    {                   
+            $result = $this->db->get_where('domain_info', array('d_name'=>$id))->row();        
+        return $result;
     }
 
 

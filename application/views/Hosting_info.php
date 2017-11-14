@@ -19,16 +19,12 @@
 <td><?=$c_data->c_mail?></td>
 </tr>
 <tr>
-<th><label class="control-label">펙스</label></th>
-<td><?=$c_data->c_fax?></td>
-</tr>
-<tr>
 <th><label class="control-label">홈페이지</label></th>
-<td><?=$c_data->c_homepage?></td>
+<td><?=$c_data->c_domain?></td>
 </tr>
 <tr>
 <th><label class="control-label">비고</label></th>
-<td><?=$c_data->c_bigo1?></td>
+<td><?=$c_data->c_memo?></td>
 </tr>
 <tr>
 <th><label class="control-label" >호스팅업체</label></th>
@@ -57,10 +53,6 @@
 <tr>
 <th><label class="control-label" >DB PW</label></th>
 <td><?=$h_data->h_dbpw?></td>
-</tr>
-<tr>
-<th><label class="control-label" >메모</label></th>
-<td><?=$h_data->h_memo?></td>
 </tr>
 </table>
 </div>

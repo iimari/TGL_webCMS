@@ -18,16 +18,12 @@
 <td><?=$c_data->c_mail?></td>
 </tr>
 <tr>
-<th><label class="control-label">펙스</label></th>
-<td><?=$c_data->c_fax?></td>
-</tr>
-<tr>
 <th><label class="control-label">홈페이지</label></th>
-<td><?=$c_data->c_homepage?></td>
+<td><?=$c_data->c_domain?></td>
 </tr>
 <tr>
 <th><label class="control-label">비고</label></th>
-<td><?=$c_data->c_bigo1?></td>
+<td><?=$c_data->c_memo?></td>
 </tr>
 <tr>
 <th><label class="control-label" >도메인서비스주소</label></th>
@@ -41,10 +37,6 @@
 </tr>
 <th><label class="control-label" >도메인관리만료일</label></th>
 <td><?=$d_data->d_enddate?></td>
-</tr>
-</tr>
-<th><label class="control-label" >메모</label></th>
-<td><?=$d_data->d_memo?></td>
 </tr>
 </table>
 </div>

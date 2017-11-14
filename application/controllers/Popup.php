@@ -33,9 +33,9 @@ class Popup extends CI_Controller{
     }    
     
     //유지보수상세정보
-    function manager_detailinfo($c_num,$mh_homepage){
+    function manager_detailinfo($c_num,$mh_domain){
         $m_data = $this->Manager_model->get_manager_detailinfo($c_num);    
-        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);        
+        $mh_data = $this->Manager_model->get_manager_history($mh_domain);        
         $c_data = $this->Manager_model->get_company_detailinfo($c_num);                   
         
 
@@ -88,17 +88,17 @@ class Popup extends CI_Controller{
         }
     }
 
-    function c_homepage_check($id)
+    function c_domain_check($id)
     {
-        //$test =  $this->input->post('c_homepage');
+        //$test =  $this->input->post('c_domain');
         $result = $this->Manager_model->insert_companyinfo_check($id);                
       
         if($id == null){
-            $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            $this->form_validation->set_message('c_domain_check', '홈페이지 주소는 필수 입력 사항입니다.');                
             return false;
-        }else if($id == $result['c_homepage']){
-        // }else if($result['c_homepage'] == $id){
-            $this->form_validation->set_message('c_homepage_check', $id.'는 중복입니다.');                
+        }else if($id == $result['c_domain']){
+        // }else if($result['c_domain'] == $id){
+            $this->form_validation->set_message('c_domain_check', $id.'는 중복입니다.');                
             return false;
 
         }else {
@@ -122,7 +122,7 @@ class Popup extends CI_Controller{
     function insert_company()
     {
         $this->form_validation->set_rules('c_name', '업체이름', 'required|callback_c_name_check');
-        $this->form_validation->set_rules('c_homepage', '홈페이지', 'required|callback_c_homepage_check');        
+        $this->form_validation->set_rules('c_domain', '홈페이지', 'required|callback_c_domain_check');        
         $this->form_validation->set_rules('c_manager', '담당자', 'required|callback_c_manager_check');        
 
         if ($this->form_validation->run() == FALSE)
@@ -133,33 +133,34 @@ class Popup extends CI_Controller{
         {   
             $company_array = array(
                 'c_name' => $this->input->post('c_name'),
-                'c_homepage' => $this->input->post('c_homepage'),
-                'c_fax' => $this->input->post('c_fax'),
-                'c_tel' => $this->input->post('c_tel'),                
                 'c_manager' => $this->input->post('c_manager'),
+                'c_tel' => $this->input->post('c_tel'),
                 'c_phone' => $this->input->post('c_phone'),
                 'c_mail' => $this->input->post('c_mail'),
+                'c_domain' => $this->input->post('c_domain'),
                 'c_hosting_check' => $this->input->post('hosting_check'),
                 'c_domain_check' => $this->input->post('domain_check'),
-                'c_managerment_check' => $this->input->post('managerment_check'),                                         
+                'c_managerment_check' => $this->input->post('managerment_check')                                        
             );                      
 
             $hosting_array = array(
-                    'h_homepage' => $this->input->post('c_homepage'),
+                    'h_domain' => $this->input->post('c_domain'),
                     'h_name' => $this->input->post('hosting_name'),
+                    'h_id' => $this->input->post('hosting_id'),
+                    'h_pw' => $this->input->post('hosting_pw'),
                     'h_startdate' => $this->input->post('hosting_st_d'),
                     'h_enddate' => $this->input->post('hosting_ed_d'),
                     'h_ftpid' => $this->input->post('hosting_ftp_id'),
                     'h_ftppw' => $this->input->post('hosting_ftp_pw'),
+                    'h_ftpmemo' => $this->input->post('hosting_ftpmemo'),
                     'h_dbid' => $this->input->post('hosting_db_id'),
-                    'h_dbpw' => $this->input->post('hosting_db_pw'),   
-                    'h_memo' => $this->input->post('hosting_memo')
+                    'h_dbpw' => $this->input->post('hosting_db_pw')   
+                 
             );
 
             $domain_array = array(
-                'd_homepage' => $this->input->post('c_homepage'),
-                'd_servicename' => $this->input->post('domain_servicename'),
-                'd_name' => $this->input->post('domain_name'),
+                'd_name' => $this->input->post('c_name'),
+                'd_servicename' => $this->input->post('domain_servicename'),             
                 'd_id' => $this->input->post('domain_id'),
                 'd_pw' => $this->input->post('domain_pw'),
                 'd_startdate' => $this->input->post('domain_st_d'),
@@ -168,7 +169,7 @@ class Popup extends CI_Controller{
             );
 
             $manager_array = array(
-                'm_homepage' => $this->input->post('c_homepage'),                
+                'm_domain' => $this->input->post('c_domain'),                
                 'm_startdate' => $this->input->post('managerment_st_d'),
                 'm_enddate' => $this->input->post('managerment_ed_d')                
            );
@@ -203,7 +204,7 @@ class Popup extends CI_Controller{
         $this->form_validation->set_rules('c_manager', '담당자', 'required');
 
         $id = $this->input->post('c_num');
-        $homepage = $this->input->post('c_homepage');
+        $homepage = $this->input->post('c_domain');
 
         if ($this->form_validation->run() == FALSE){
             $this->load->view('Main_rewrite');
@@ -213,21 +214,21 @@ class Popup extends CI_Controller{
             'c_num'=> $this->input->post('c_num'),
             'c_name'=>$this->input->post('c_name'),
             'c_manager'=>$this->input->post('c_manager'),
-            'c_phone'=>$this->input->post('c_phone'),
-            'c_mail'=> $this->input->post('c_mail'),
-            'c_fax'=>$this->input->post('c_fax'),
-            'c_homepage'=>$this->input->post('c_homepage'),
-            'c_bigo1'=>$this->input->post('c_bigo1')
+            'c_tel'=>$this->input->post('c_tel'),
+            'c_phone'=> $this->input->post('c_phone'),
+            'c_mail'=>$this->input->post('c_mail'),
+            'c_domain'=>$this->input->post('c_domain'),
+            'c_memo'=>$this->input->post('c_memo')
         );
             if($type == 'domain_detailinfo' or $type == 'detailinfo' )
             {
                 $domain_array = array(
-                    'd_num'=>$this->input->post('d_num'),
+                    'd_num'=>$this->input->post('d_num'),                    
+                    'd_name'=>$this->input->post('d_name'),
                     'd_servicename'=>$this->input->post('d_servicename'),
                     'd_id'=>$this->input->post('d_id'),
                     'd_pw'=>$this->input->post('d_pw'),
-                    'd_enddate'=>$this->input->post('d_enddate'),
-                    'd_memo'=>$this->input->post('d_memo')
+                    'd_enddate'=>$this->input->post('d_enddate')
                 );                            
             }else {
                 $domain_array = array('');
@@ -248,14 +249,17 @@ class Popup extends CI_Controller{
             {
                 $hosting_array = array(
                     'h_num'=>$this->input->post('h_num'),
+                    'h_domain'=>$this->input->post('h_domain'),
                     'h_name'=>$this->input->post('h_name'),
+                    'h_id'=>$this->input->post('h_id'),
+                    'h_pw'=>$this->input->post('h_pw'),                    
                     'h_startdate'=>$this->input->post('h_startdate'),
                     'h_enddate'=>$this->input->post('h_enddate'),
                     'h_ftpid'=>$this->input->post('h_ftpid'),
                     'h_ftppw'=>$this->input->post('h_ftppw'),
+                    'h_ftpmemo'=>$this->input->post('h_ftpmemo'),
                     'h_dbid'=>$this->input->post('h_dbid'),
-                    'h_dbpw'=>$this->input->post('h_dbpw'),
-                    'h_memo'=>$this->input->post('h_memo')
+                    'h_dbpw'=>$this->input->post('h_dbpw')
                 );             
             }else {
                 $hosting_array = array('');
@@ -276,7 +280,7 @@ class Popup extends CI_Controller{
             redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');            
         }else{
             $managerment_array = array(
-                'mh_homepage' => $homepage,
+                'mh_domain' => $homepage,
                 'mh_title'=> $this->input->post('mh_title'),
                 'mh_text'=> $this->input->post('mh_text'),
                 'mh_worker'=> $this->input->post('mh_worker')
@@ -299,15 +303,14 @@ class Popup extends CI_Controller{
         
         $manager_array = array(
             'mh_num'=> $this->input->post('mh_num'),
-            'mh_worker'=>$this->input->post('mh_worker'),
-            'mh_title'=>$this->input->post('mh_title'),
+            'mh_worker'=>$this->input->post('mh_worker'),       
             'mh_text'=>$this->input->post('mh_text')
         );
         $this->Manager_model->manager_modifysave($manager_array);       
 
         $id = $this->input->post('id');
-        $mh_homepage = $this->input->post('homepage');
-        redirect(site_url("/popup/manager_detailinfo/$id/$mh_homepage"), 'refresh');
+        $mh_domain = $this->input->post('homepage');
+        redirect(site_url("/popup/manager_detailinfo/$id/$mh_domain"), 'refresh');
      }
 }
 

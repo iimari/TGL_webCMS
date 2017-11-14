@@ -26,6 +26,7 @@ class Login extends CI_Controller{
         $this->form_validation->set_rules('password','비밀번호','trim|required|callback_basisdata_cek');   
         if($this->form_validation->run() == false)
         {
+            echo "<script>alert('등록에 실패했습니다.');</script>";
             $this->load->view('Login_view');
         }else {
             redirect(site_url('/Main'), 'refresh');

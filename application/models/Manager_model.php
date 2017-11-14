@@ -55,7 +55,7 @@ class Manager_model extends CI_Model {
     
     function insert_companyinfo_check($id)
     {        
-        return $this->db->get_where('company', array('c_homepage'=>$id))->row();        
+        return $this->db->get_where('company', array('c_domain'=>$id))->row();        
     }
 
 
@@ -85,9 +85,9 @@ class Manager_model extends CI_Model {
     {              
        return $this->db->get_where('hosting_info', array('h_num'=>$h_num))->row();        
     }
-    function get_manager_history($mh_homepage)
+    function get_manager_history($mh_domain)
     {              
-       return $this->db->get_where('manager_history', array('mh_homepage'=>$mh_homepage))->result();    
+       return $this->db->get_where('manager_history', array('mh_domain'=>$mh_domain))->result();    
     }
     function get_manager_detailinfo($m_num)
     {

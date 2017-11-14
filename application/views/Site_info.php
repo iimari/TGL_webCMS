@@ -54,7 +54,7 @@
                         <?php
                             echo $lt['c_name'];
                             echo "\t";
-                            echo $lt['c_homepage'];            
+                            echo $lt['c_domain'];            
                             echo "\t";
                             echo $lt['c_manager'];
                             echo "\t";

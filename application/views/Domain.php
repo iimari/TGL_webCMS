@@ -35,7 +35,7 @@
                                     <?php  
                                         echo $lt['c_name'];
                                         echo "\t";
-                                        echo $lt['c_homepage'];            
+                                        echo $lt['c_domain'];            
                                         echo "\t";
                                         echo $lt['c_manager'];
                                         echo "\t";
@@ -63,7 +63,7 @@
             if($tdata['c_managerment_check'] == null){
                 //return true;
             }else{ ?>                                            
-        <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/manager_detailinfo/'.$tdata['c_num'].'/'.$tdata['c_homepage'].'');?>','name','resizable=no width=800 height=800');return false">               
+        <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/manager_detailinfo/'.$tdata['c_num'].'/'.$tdata['c_domain'].'');?>','name','resizable=no width=800 height=800');return false">               
         <div style = "text-decoration:none; border-style:solid">
             <?php if($tdata['c_hosting_check'] == null){ ?>
                     <div>비활성화/호스팅</div> <?php echo "\t";
@@ -83,7 +83,7 @@
                 <?php  
                     echo $tdata['c_name'];
                     echo "\t";
-                    echo $tdata['c_homepage'];            
+                    echo $tdata['c_domain'];            
                     echo "\t";
                     echo $tdata['c_manager'];
                     echo "\t";

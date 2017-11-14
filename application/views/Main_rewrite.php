@@ -25,16 +25,12 @@
     <td><input type="text" name="c_mail" placeholder="메일" value = "<?=$mo_c_data->c_mail?>"></input></td> 
 </tr>
 <tr>
-    <th><label class="control-label">펙스</label></th>
-    <td><input type="text" name="c_fax" placeholder="펙스" value = "<?=$mo_c_data->c_fax?>"></input></td> 
-</tr>
-<tr>
    <th><label class="control-label">홈페이지</label></th>
-   <td><input type="text" name="c_homepage" placeholder="홈페이지" value = "<?=$mo_c_data->c_homepage?>"></input></td> 
+   <td><input type="text" name="c_domain" placeholder="홈페이지" value = "<?=$mo_c_data->c_domain?>"></input></td> 
 </tr>
 <tr>
     <th><label class="control-label">비고</label></th>
-    <td><input type="text" name="c_bigo1" placeholder="비고1" value = "<?=$mo_c_data->c_bigo1?>"></input></td> 
+    <td><input type="text" name="c_memo" placeholder="메모" value = "<?=$mo_c_data->c_memo?>"></input></td> 
 </tr>
 <?php if($type == 'hosting_detailinfo' or $type == 'detailinfo') {?>
 <!-- 호스팅 시작 -->
@@ -66,10 +62,7 @@
             <th><label class="control-label" >DB PW</label></th>
             <td><input type="text" name="h_dbpw" placeholder="DB PW" value = "<?=$mo_h_data->h_dbpw?>"></input></td>
         </tr>
-        </tr>
-            <th><label class="control-label" >메모</label></th>
-            <td><input type="text" name="h_memo" placeholder="메모" value = "<?=$mo_h_data->h_memo?>"></input></td>
-        </tr>
+        
 <?php } if($type == 'domain_detailinfo' or $type == 'detailinfo' ) {?>
 <!-- 호스팅 끝 -->
 <!-- 도메인 시작 -->
@@ -86,10 +79,7 @@
             <th><label class="control-label" >도메인 만료일</label></th>
             <td><input type="text" name="d_enddate" placeholder="도메인 만료일" value = "<?=$mo_d_data->d_enddate?>"></input></td>
         </tr>
-        </tr>
-            <th><label class="control-label" >메모</label></th>
-            <td><input type="text" name="d_memo" placeholder="메모" value = "<?=$mo_d_data->d_memo?>"></input></td>
-        </tr>
+       
         
         
         <!-- 도메인 끝 -->

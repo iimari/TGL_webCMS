@@ -91,12 +91,13 @@ class Popup extends CI_Controller{
     function c_homepage_check($id)
     {
         //$test =  $this->input->post('c_homepage');
-        $result = $this->Manager_model->insert_companyinfo_check($id);        
+        $result = $this->Manager_model->insert_companyinfo_check($id);                
+      
         if($id == null){
             $this->form_validation->set_message('c_homepage_check', '홈페이지 주소는 필수 입력 사항입니다.');                
             return false;
-
-        }else if($result->c_homepage == $id){
+        }else if($id == $result['c_homepage']){
+        // }else if($result['c_homepage'] == $id){
             $this->form_validation->set_message('c_homepage_check', $id.'는 중복입니다.');                
             return false;
 
@@ -110,7 +111,7 @@ class Popup extends CI_Controller{
         $test =  $this->input->post('c_manager');
         if($test == null)
         {
-            $this->form_validation->set_message('c_manager_check', '홈페이지 주소는 필수 입력 사항입니다.');                
+            $this->form_validation->set_message('c_manager_check', '담당자는 필수 입력 사항입니다.');                
             return false;
         }else {
             return true;

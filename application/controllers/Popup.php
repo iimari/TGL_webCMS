@@ -152,7 +152,8 @@ class Popup extends CI_Controller{
                     'h_ftpid' => $this->input->post('hosting_ftp_id'),
                     'h_ftppw' => $this->input->post('hosting_ftp_pw'),
                     'h_dbid' => $this->input->post('hosting_db_id'),
-                    'h_dbpw' => $this->input->post('hosting_db_pw')                    
+                    'h_dbpw' => $this->input->post('hosting_db_pw'),   
+                    'h_memo' => $this->input->post('hosting_memo')
             );
 
             $domain_array = array(
@@ -162,13 +163,14 @@ class Popup extends CI_Controller{
                 'd_id' => $this->input->post('domain_id'),
                 'd_pw' => $this->input->post('domain_pw'),
                 'd_startdate' => $this->input->post('domain_st_d'),
-                'd_enddate' => $this->input->post('domain_ed_d')                                          
+                'd_enddate' => $this->input->post('domain_ed_d'),
+                'd_memo' => $this->input->post('domain_memo')
             );
 
             $manager_array = array(
                 'm_homepage' => $this->input->post('c_homepage'),                
                 'm_startdate' => $this->input->post('managerment_st_d'),
-                'm_enddate' => $this->input->post('managerment_ed_d'),                
+                'm_enddate' => $this->input->post('managerment_ed_d')                
            );
                                             
             $this->Manager_model->insert_company_info($company_array,$hosting_array,$domain_array,$manager_array);                               

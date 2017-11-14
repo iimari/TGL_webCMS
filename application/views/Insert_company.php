@@ -34,7 +34,9 @@
             <a>FTP PW : </a><input type="text" name="hosting_ftp_pw" value="<?php echo set_value('hosting_ftp_pw'); ?>" size="15" />
         </br>    
             <a>DB  ID : </a><input type="text" name="hosting_db_id" value="<?php echo set_value('hosting_db_id'); ?>" size="15" />
-            <a>DB  PW : </a><input type="text" name="hosting_db_pw" value="<?php echo set_value('hosting_db_pw'); ?>" size="15" />        
+            <a>DB  PW : </a><input type="text" name="hosting_db_pw" value="<?php echo set_value('hosting_db_pw'); ?>" size="15" />  
+        </br>      
+            <a>Memo : </a><input type="text" name="hosting_memo" value="<?php echo set_value('hosting_memo'); ?>" size="50" />        
         </div>
         </br>            
 
@@ -48,7 +50,9 @@
             <a>신청 도메인 주소 : </a><input type="text" name="domain_name" id="textTest" value="<?php echo set_value('domain_name'); ?>" size="15" />
             </br>
             <a>도메인 시작일 : </a><input type="text" name="domain_st_d" id="textTest" value="<?php echo set_value('domain_st_d'); ?>" size="15" />
-            <a>도메인 종료일 : </a><input type="text" name="domain_ed_d" value="<?php echo set_value('domain_ed_d'); ?>" size="15" />            
+            <a>도메인 종료일 : </a><input type="text" name="domain_ed_d" value="<?php echo set_value('domain_ed_d'); ?>" size="15" />
+        </br>                        
+        <a>Memo : </a><input type="text" name="domain_memo" value="<?php echo set_value('domain_memo'); ?>" size="50" />        
         </div>
         <br>
 

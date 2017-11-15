@@ -33,9 +33,9 @@ class Popup extends CI_Controller{
     }    
     
     //유지보수상세정보
-    function manager_detailinfo($c_num,$mh_homepage){
+    function manager_detailinfo($c_num,$mh_domain){
         $m_data = $this->Manager_model->get_manager_detailinfo($c_num);    
-        $mh_data = $this->Manager_model->get_manager_history($mh_homepage);        
+        $mh_data = $this->Manager_model->get_manager_history($mh_domain);        
         $c_data = $this->Manager_model->get_company_detailinfo($c_num);                   
         
 
@@ -221,7 +221,7 @@ class Popup extends CI_Controller{
         $this->form_validation->set_rules('c_manager', '담당자', 'required');
 
         $id = $this->input->post('c_num');
-        $homepage = $this->input->post('c_homepage');
+        $homepage = $this->input->post('c_domain');
 
         if ($this->form_validation->run() == FALSE){
             $this->load->view('Main_rewrite');
@@ -231,16 +231,17 @@ class Popup extends CI_Controller{
             'c_num'=> $this->input->post('c_num'),
             'c_name'=>$this->input->post('c_name'),
             'c_manager'=>$this->input->post('c_manager'),
-            'c_phone'=>$this->input->post('c_phone'),
-            'c_mail'=> $this->input->post('c_mail'),
-            'c_fax'=>$this->input->post('c_fax'),
-            'c_homepage'=>$this->input->post('c_homepage'),
-            'c_bigo1'=>$this->input->post('c_bigo1')
+            'c_tel'=>$this->input->post('c_tel'),
+            'c_phone'=> $this->input->post('c_phone'),
+            'c_mail'=>$this->input->post('c_mail'),
+            'c_domain'=>$this->input->post('c_domain'),
+            'c_memo'=>$this->input->post('c_memo')
         );
             if($type == 'domain_detailinfo' or $type == 'detailinfo' )
             {
                 $domain_array = array(
-                    'd_num'=>$this->input->post('d_num'),
+                    'd_num'=>$this->input->post('d_num'),                    
+                    'd_name'=>$this->input->post('d_name'),
                     'd_servicename'=>$this->input->post('d_servicename'),
                     'd_id'=>$this->input->post('d_id'),
                     'd_pw'=>$this->input->post('d_pw'),
@@ -265,11 +266,15 @@ class Popup extends CI_Controller{
             {
                 $hosting_array = array(
                     'h_num'=>$this->input->post('h_num'),
+                    'h_domain'=>$this->input->post('h_domain'),
                     'h_name'=>$this->input->post('h_name'),
+                    'h_id'=>$this->input->post('h_id'),
+                    'h_pw'=>$this->input->post('h_pw'),                    
                     'h_startdate'=>$this->input->post('h_startdate'),
                     'h_enddate'=>$this->input->post('h_enddate'),
                     'h_ftpid'=>$this->input->post('h_ftpid'),
                     'h_ftppw'=>$this->input->post('h_ftppw'),
+                    'h_ftpmemo'=>$this->input->post('h_ftpmemo'),
                     'h_dbid'=>$this->input->post('h_dbid'),
                     'h_dbpw'=>$this->input->post('h_dbpw')
                 );             
@@ -292,7 +297,7 @@ class Popup extends CI_Controller{
             redirect(site_url("/popup/manager_detailinfo/$id/$homepage"), 'refresh');            
         }else{
             $managerment_array = array(
-                'mh_homepage' => $homepage,
+                'mh_domain' => $homepage,
                 'mh_title'=> $this->input->post('mh_title'),
                 'mh_text'=> $this->input->post('mh_text'),
                 'mh_worker'=> $this->input->post('mh_worker')
@@ -315,15 +320,14 @@ class Popup extends CI_Controller{
         
         $manager_array = array(
             'mh_num'=> $this->input->post('mh_num'),
-            'mh_worker'=>$this->input->post('mh_worker'),
-            'mh_title'=>$this->input->post('mh_title'),
+            'mh_worker'=>$this->input->post('mh_worker'),       
             'mh_text'=>$this->input->post('mh_text')
         );
         $this->Manager_model->manager_modifysave($manager_array);       
 
         $id = $this->input->post('id');
-        $mh_homepage = $this->input->post('homepage');
-        redirect(site_url("/popup/manager_detailinfo/$id/$mh_homepage"), 'refresh');
+        $mh_domain = $this->input->post('homepage');
+        redirect(site_url("/popup/manager_detailinfo/$id/$mh_domain"), 'refresh');
      }
 }
 

@@ -19,16 +19,12 @@
 <td><?=$c_data->c_mail?></td>
 </tr>
 <tr>
-<th><label class="control-label">펙스</label></th>
-<td><?=$c_data->c_fax?></td>
-</tr>
-<tr>
 <th><label class="control-label">홈페이지</label></th>
-<td><?=$c_data->c_homepage?></td>
+<td><?=$c_data->c_domain?></td>
 </tr>
 <tr>
-<th><label class="control-label">비고</label></th>
-<td><?=$c_data->c_bigo1?></td>
+<th><label class="control-label">메모</label></th>
+<td><?=$c_data->c_memo?></td>
 </tr>
 </tr>
 <tr>
@@ -59,33 +55,26 @@
 <div>
 <table border="1">
 <tr>
-<th><label class="control-label" >업체 홈페이지</label></th>
-<th><label class="control-label" >제목</label></th>
+<th><label class="control-label" >관리내역 작성시간</label></th>
 <th><label class="control-label" >관리내역 작성내용</label></th>
 <th><label class="control-label" >관리내역 작성자</label></th>
-<th><label class="control-label" >관리내역 작성시간</label></th>
 </tr>
 <?php foreach($mh_data as $mh) { ?>
 
 <tr>
-<td><?=$mh->mh_homepage?></td>
-<td><a href= "<?php echo site_url('/popup/managerment_modify/'.$c_data->c_num.'/'.$c_data->c_homepage.'/'.$mh->mh_num);?>"><?=$mh->mh_title?></td>
-<td><?=$mh->mh_text?></td>
-<td><?=$mh->mh_worker?></td>
 <td><?=$mh->mh_createdate?></td>
+<td><?=$mh->mh_text?></td>
+<td><a href= "<?php echo site_url('/popup/managerment_modify/'.$c_data->c_num.'/'.$c_data->c_domain.'/'.$mh->mh_num);?>"><?=$mh->mh_worker?></a></td>
+
 </tr>
 <?php } ?>
 </table>
 
-<form action="<?php echo site_url('/popup/managerment_insert/'.$c_data->c_num.'/'.$c_data->c_homepage);?>" method="post">
+<form action="<?php echo site_url('/popup/managerment_insert/'.$c_data->c_num.'/'.$c_data->c_domain);?>" method="post">
 <table border="1">
 <tr>
 <th><label class="control-label" >작성자</label></th>
 <th><textarea name="mh_worker" cols="70" rows="1" ></textarea></th>
-</tr>
-<tr>
-<th><label class="control-label" >제목</label></th>
-<th><textarea name="mh_title" cols="70" rows="2" ></textarea></th>
 </tr>
 <tr>
 <th><label class="control-label">내용</label></th>

@@ -17,7 +17,7 @@
                 <a href="javascript:;" style="text-decoration:none" onclick="window.open(' <?php echo site_url('/popup/detailinfo/'.$lt['c_num'].'');?>','name','resizable=no width=800 height=800');return false">               
                 <div style = "text-decoration:none; border-style:solid">
                     <?php 
-                        if($lt['c_hosting_check'] == null){
+                        if($lt['c_hosting_check'] == 0){
                             ?>
                             <div>비활성화/호스팅</div>
                             <?php
@@ -28,7 +28,7 @@
                             <?php
                             echo "\t";
                         }
-                        if($lt['c_domain_check'] == null){
+                        if($lt['c_domain_check'] == 0){
                             ?>
                             <div>비활성화/도메인</div>
                             <?php     
@@ -39,7 +39,7 @@
                             <?php                      
                             echo "\t";  
                         }
-                        if($lt['c_managerment_check'] == null){
+                        if($lt['c_managerment_check'] == 0){
                             ?>
                             <div>비활성화/유지보수</div>
                             <?php                        

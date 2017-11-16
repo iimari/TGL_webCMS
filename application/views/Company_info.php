@@ -11,6 +11,10 @@
 <td><?=$c_data->c_manager?></td>
 </tr>
 <tr>
+<th><label class="control-label">내선</label></th>
+<td><?=$c_data->c_tel?></td>
+</tr>
+<tr>
 <th><label class="control-label">휴대폰</label></th>
 <td><?=$c_data->c_phone?></td>
 </tr>

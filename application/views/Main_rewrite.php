@@ -1,5 +1,3 @@
-<?php echo $type; ?>
-
 <form action="<?php echo site_url('/popup/detail_modifysave/'.$type.'');?>" method="post" >
 <div style="display:none">
     <input type="text" name="m_num" placeholder="업체번호" value = "<?=$mo_m_data->m_num?>"></input><br>
